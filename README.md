@@ -1,1 +1,1 @@
-# QCharts
+## react + webpack project
