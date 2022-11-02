@@ -32,9 +32,6 @@ export const BaseMenu = () => {
                 Link to text
             </MenuItem>
         </Link>
-
-
-
     </Menu>
 
 }
