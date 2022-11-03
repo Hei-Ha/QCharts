@@ -1,14 +1,10 @@
 import React, { useEffect } from 'react';
-
 import * as echarts from 'echarts/core';
 import { GridComponent, LegendComponent } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 
 echarts.use([GridComponent, BarChart, CanvasRenderer, LegendComponent]);
-
-
-
 
 export const BaseColumnChart = () => {
 
@@ -41,7 +37,6 @@ export const BaseColumnChart = () => {
                     name: 'Mon',
                     data: [120, 200, 150, 80, 70, 110, 130],
                     type: 'bar',
-                    // showBackground: true,
                     barMinWidth: 40,
                     barMaxWidth: 40,
                     itemStyle: {
@@ -55,8 +50,8 @@ export const BaseColumnChart = () => {
         option && myChart.setOption(option);
     }
 
-    return <div className='bg-#F2F3F8'>
-        <p>基础柱状图</p>
+    return <div>
+        <p className='text-#1D2129 text-xl mb-5'>基础柱状图</p>
         <div id='BaseColumnChart' style={{ height: '400px', width: '800px', background: '#FFFFFF' }} />
     </div>
 }

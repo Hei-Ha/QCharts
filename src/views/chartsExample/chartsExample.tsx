@@ -8,7 +8,7 @@ export const ChartsExample = () => {
         <div className='h-[calc(100vh-52px)]'>
             <SiderMenu/>
         </div>
-        <div className='p-5h-full w-full overflow-hidden'>
+        <div className='p-5 h-full w-full overflow-hidden bg-#F2F3F8'>
             <Outlet/>
         </div>
     </div>
