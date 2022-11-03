@@ -4,6 +4,7 @@ module.exports = {
         extend: {},
         colors: {
             '#CCCCCC': '#CCCCCC',
+            '#F2F3F8': '#F2F3F8'
         }
     },
     plugins: []
