@@ -7,29 +7,22 @@ import {HashRouter, Outlet} from "react-router-dom";
 
 const Header = Layout.Header;
 const Content = Layout.Content;
-const Footer = Layout.Footer;
 
 export const App = () => {
-    return <HashRouter>
-        <Layout>
-            <Header>
-                <BaseMenu/>
-            </Header>
+    return <div className='w-full h-full'>
+        <HashRouter>
+            <Layout>
+                <Header>
+                    <BaseMenu/>
+                </Header>
 
-            <Content>
-                <Routers />
-                <Outlet />
-            </Content>
-
-            {/*<Footer>*/}
-            {/*    <div className='fixed bottom-0 h-6 w-full flex justify-center border border-#CCCCCC border-solid'>*/}
-            {/*        design by Hei_Ha*/}
-            {/*    </div>*/}
-            {/*</Footer>*/}
-        </Layout>
-    </HashRouter>
-
-
+                <Content style={{ height: '100%', background: 'pink'}}>
+                    <Routers />
+                    <Outlet />
+                </Content>
+            </Layout>
+        </HashRouter>
+    </div>
 }
 
 

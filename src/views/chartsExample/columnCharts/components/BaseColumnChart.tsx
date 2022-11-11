@@ -50,8 +50,16 @@ export const BaseColumnChart = () => {
         option && myChart.setOption(option);
     }
 
-    return <div>
-        <p className='text-#1D2129 text-xl mb-5'>基础柱状图</p>
-        <div id='BaseColumnChart' style={{ height: '400px', width: '800px', background: '#FFFFFF' }} />
+    return <div className='flex'>
+        <div className='w-40% border-r border-solid border-#CCCCCC'>
+            code
+        </div>
+        <div>
+            <h3 className='text-#1D2129 text-xl mb-5 font-semibold'>基础柱状图</h3>
+            <div className='flex justify-center'>
+                <div id='BaseColumnChart' style={{ height: '400px', width: '800px', background: '#FFFFFF' }} />
+            </div>
+        </div>
+
     </div>
 }

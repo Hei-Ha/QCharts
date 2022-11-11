@@ -8,10 +8,11 @@ const Row = Grid.Row;
 const Col = Grid.Col;
 
 export const ColumnChartsContent = () => {
-    return <div>
-        <Link to='/charts/columnCharts/base'>
-            基础柱状图
-        </Link>
+    return <div className='bg-#CCCCCC' style={{ width: '100%', height: '100%'}}>
+        123123
+        {/*<Link to='/charts/columnCharts/base'>*/}
+        {/*    基础柱状图*/}
+        {/*</Link>*/}
     </div>
     // const arr = [1, 2, 3, 4, 5, 6, 7];
     // return <div className='flex flex-wrap justify-between w-calc[100%-300px]'>
