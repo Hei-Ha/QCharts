@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import * as echarts from 'echarts/core';
 import { GridComponent, LegendComponent } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
@@ -7,12 +7,40 @@ import { CanvasRenderer } from 'echarts/renderers';
 echarts.use([GridComponent, BarChart, CanvasRenderer, LegendComponent]);
 
 export const BaseColumnChart = () => {
+    const [leftWidth, setLeftWidth] = useState<number>(600);
+    const codeWrap = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         init();
+        initChart();
+        const ele = document.getElementById('dragAxis');
+        ele && ele.addEventListener('mousedown', DragAxis);
+
+        return () => {
+            ele && ele.removeEventListener('mousedown', DragAxis);
+        }
     }, [])
 
+
     const init = () => {
+        codeWrap.current = document.getElementsByClassName('codeWrap')[0] as HTMLDivElement;
+    }
+
+
+    const DragAxis = (e: Event) => {
+        document.onmousemove = (e) => {
+            console.log(codeWrap.current)
+
+            codeWrap.current.style.left = `${e.clientX - 200}px`
+        };
+
+        document.onmouseup = (e) => {
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+
+    const initChart = () => {
         const chartDom = document.getElementById('BaseColumnChart');
         const myChart = echarts.init(chartDom);
         let option;
@@ -50,16 +78,15 @@ export const BaseColumnChart = () => {
         option && myChart.setOption(option);
     }
 
-    return <div className='flex'>
-        <div className='w-40% border-r border-solid border-#CCCCCC'>
+    return <div className='baseColumnWrap flex h-full w-full'>
+        <div className='codeWrap' style={{ width: `${leftWidth}px`}}>
             code
         </div>
-        <div>
-            <h3 className='text-#1D2129 text-xl mb-5 font-semibold'>基础柱状图</h3>
-            <div className='flex justify-center'>
-                <div id='BaseColumnChart' style={{ height: '400px', width: '800px', background: '#FFFFFF' }} />
-            </div>
+        <div id='dragAxis' className=' w-4 bg-#CCCCCC cursor-col-resize' />
+        <div className='flex justify-center w-full h-full p-5 bg-#EAEBF2'>
+            <div
+                id='BaseColumnChart'
+                style={{ height: '100%', width: `calc(100vw - 200px - ${leftWidth}px)` }} />
         </div>
-
     </div>
 }

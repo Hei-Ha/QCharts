@@ -15,8 +15,7 @@ export const App = () => {
                 <Header>
                     <BaseMenu/>
                 </Header>
-
-                <Content style={{ height: '100%', background: 'pink'}}>
+                <Content>
                     <Routers />
                     <Outlet />
                 </Content>

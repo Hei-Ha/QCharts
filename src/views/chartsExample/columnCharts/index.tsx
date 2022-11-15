@@ -7,7 +7,7 @@ import { BaseColumnChart } from '@src/views/chartsExample/columnCharts/component
 const Row = Grid.Row;
 const Col = Grid.Col;
 
-export const ColumnChartsContent = () => {
+export const Index = () => {
     return <div>
         <Link to='/charts/columnCharts/base'>
             基础柱状图
