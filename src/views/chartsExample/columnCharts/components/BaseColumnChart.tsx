@@ -13,7 +13,7 @@ export const BaseColumnChart = () => {
     const chartWrap = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        // init();
+        init();
         // initChart();
 
         return () => {
@@ -26,23 +26,21 @@ export const BaseColumnChart = () => {
         codeWrap.current = document.getElementsByClassName('codeWrap')[0] as HTMLDivElement;
         dragAxis.current = document.getElementsByClassName('dragAxis')[0] as HTMLDivElement;
         chartWrap.current = document.getElementsByClassName('chartWrap')[0] as HTMLDivElement;
+
         dragAxis.current && dragAxis.current.addEventListener('mousedown', DragAxis);
     }
 
 
     const DragAxis = (e: MouseEvent) => {
         if (!codeWrap.current || !dragAxis.current) return;
-
         document.onmousemove = (ev) => {
-            let distance = ev.clientX - e.clientX;
-
-            dragAxis.current.style.transform = `translateX(${distance}px)` // 208: 左侧菜单宽度
+            // let distance = ev.clientX - e.clientX;
+            // dragAxis.current.style.transform = `translateX(${distance})px`;
         };
 
         document.onmouseup = (ev) => {
             let distance = ev.clientX - e.clientX;
-            dragAxis.current.style.transform = `translateX(${distance}px)` // 208: 左侧菜单宽度
-            dragAxis.current.style.left = dragAxis.current.style.left + distance + 'px'
+            codeWrap.current.style.width = codeWrap.current.offsetWidth + distance + 'px';
             document.onmousemove = null;
             document.onmouseup = null;
         };
@@ -87,11 +85,11 @@ export const BaseColumnChart = () => {
     }
 
     return <div className='baseColumnWrap flex h-full w-full'>
-        <div className='codeWrap' style={{ width: `600px`}}>
+        <div className='codeWrap select-none' style={{ width: `600px`}}>
             code
         </div>
-        <div className='dragAxis  w-4 h-full bg-#CCCCCC cursor-col-resize' />
-        <div className='chartWrap flex justify-center h-full bg-#EAEBF2 grow'>
+        <div className='dragAxis w-4 h-full bg-#CCCCCC cursor-col-resize' />
+        <div className='chartWrap flex grow justify-center h-full bg-#EAEBF2 select-none'>
             123
             {/*<div*/}
             {/*    id='BaseColumnChart'*/}
