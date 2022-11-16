@@ -8,7 +8,7 @@ export const ChartsExample = () => {
         <div className='h-full w-52 border-box'>
             <SiderMenu />
         </div>
-        <div className='h-full w-auto overflow-hidden border-box'>
+        <div className='h-full w-full overflow-hidden border-box'>
             <Outlet/>
         </div>
     </div>

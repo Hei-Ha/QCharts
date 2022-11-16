@@ -86,16 +86,16 @@ export const BaseColumnChart = () => {
         option && myChart.setOption(option);
     }
 
-    return <div className='baseColumnWrap flex h-full w-full bg-#CCCCCC'>
-        21312
-        {/*<div className='codeWrap' style={{ width: `600px`}}>*/}
-        {/*    code*/}
-        {/*</div>*/}
-        {/*<div className='dragAxis  w-4 h-full bg-#CCCCCC cursor-col-resize' />*/}
-        {/*<div className='chartWrap flex justify-center h-full p-5 bg-#EAEBF2'>*/}
-        {/*    /!*<div*!/*/}
-        {/*    /!*    id='BaseColumnChart'*!/*/}
-        {/*    /!*    style={{ height: '100%', width: `calc(100vw - 208px - 600px)` }} />*!/*/}
-        {/*</div>*/}
+    return <div className='baseColumnWrap flex h-full w-full'>
+        <div className='codeWrap' style={{ width: `600px`}}>
+            code
+        </div>
+        <div className='dragAxis  w-4 h-full bg-#CCCCCC cursor-col-resize' />
+        <div className='chartWrap flex justify-center h-full bg-#EAEBF2 grow'>
+            123
+            {/*<div*/}
+            {/*    id='BaseColumnChart'*/}
+            {/*    style={{ height: '100%', width: `calc(100vw - 208px - 600px)` }} />*/}
+        </div>
     </div>
 }
