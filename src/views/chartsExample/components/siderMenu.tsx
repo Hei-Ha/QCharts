@@ -10,7 +10,7 @@ export const SiderMenu = () => {
         mode='vertical'
         theme='dark'
         defaultSelectedKeys={currentSelectKey}
-        className='w-52 h-full box-border'
+        className='w-full h-full box-border'
         onClickMenuItem={(key) => { setCurrentSelectKey([key]) }}
     >
         <Link to='/charts/columnCharts'>

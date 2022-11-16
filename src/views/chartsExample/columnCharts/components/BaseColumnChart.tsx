@@ -7,37 +7,45 @@ import { CanvasRenderer } from 'echarts/renderers';
 echarts.use([GridComponent, BarChart, CanvasRenderer, LegendComponent]);
 
 export const BaseColumnChart = () => {
-    const [leftWidth, setLeftWidth] = useState<number>(600);
+    // const [leftWidth, setLeftWidth] = useState<number>(600);
     const codeWrap = useRef<HTMLDivElement>(null);
+    const dragAxis = useRef<HTMLDivElement>(null);
+    const chartWrap = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        init();
-        initChart();
-        const ele = document.getElementById('dragAxis');
-        ele && ele.addEventListener('mousedown', DragAxis);
+        // init();
+        // initChart();
 
         return () => {
-            ele && ele.removeEventListener('mousedown', DragAxis);
+            dragAxis.current && dragAxis.current.removeEventListener('mousedown', DragAxis);
         }
     }, [])
 
 
     const init = () => {
         codeWrap.current = document.getElementsByClassName('codeWrap')[0] as HTMLDivElement;
+        dragAxis.current = document.getElementsByClassName('dragAxis')[0] as HTMLDivElement;
+        chartWrap.current = document.getElementsByClassName('chartWrap')[0] as HTMLDivElement;
+        dragAxis.current && dragAxis.current.addEventListener('mousedown', DragAxis);
     }
 
 
-    const DragAxis = (e: Event) => {
-        document.onmousemove = (e) => {
-            console.log(codeWrap.current)
+    const DragAxis = (e: MouseEvent) => {
+        if (!codeWrap.current || !dragAxis.current) return;
 
-            codeWrap.current.style.left = `${e.clientX - 200}px`
+        document.onmousemove = (ev) => {
+            let distance = ev.clientX - e.clientX;
+
+            dragAxis.current.style.transform = `translateX(${distance}px)` // 208: 左侧菜单宽度
         };
 
-        document.onmouseup = (e) => {
+        document.onmouseup = (ev) => {
+            let distance = ev.clientX - e.clientX;
+            dragAxis.current.style.transform = `translateX(${distance}px)` // 208: 左侧菜单宽度
+            dragAxis.current.style.left = dragAxis.current.style.left + distance + 'px'
             document.onmousemove = null;
             document.onmouseup = null;
-        }
+        };
     }
 
     const initChart = () => {
@@ -78,15 +86,16 @@ export const BaseColumnChart = () => {
         option && myChart.setOption(option);
     }
 
-    return <div className='baseColumnWrap flex h-full w-full'>
-        <div className='codeWrap' style={{ width: `${leftWidth}px`}}>
-            code
-        </div>
-        <div id='dragAxis' className=' w-4 bg-#CCCCCC cursor-col-resize' />
-        <div className='flex justify-center w-full h-full p-5 bg-#EAEBF2'>
-            <div
-                id='BaseColumnChart'
-                style={{ height: '100%', width: `calc(100vw - 200px - ${leftWidth}px)` }} />
-        </div>
+    return <div className='baseColumnWrap flex h-full w-full bg-#CCCCCC'>
+        21312
+        {/*<div className='codeWrap' style={{ width: `600px`}}>*/}
+        {/*    code*/}
+        {/*</div>*/}
+        {/*<div className='dragAxis  w-4 h-full bg-#CCCCCC cursor-col-resize' />*/}
+        {/*<div className='chartWrap flex justify-center h-full p-5 bg-#EAEBF2'>*/}
+        {/*    /!*<div*!/*/}
+        {/*    /!*    id='BaseColumnChart'*!/*/}
+        {/*    /!*    style={{ height: '100%', width: `calc(100vw - 208px - 600px)` }} />*!/*/}
+        {/*</div>*/}
     </div>
 }
