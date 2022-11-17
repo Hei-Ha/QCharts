@@ -1,6 +1,5 @@
 import path from 'path';
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import RemarkHTML from 'remark-html';
 
 const rootPath = path.resolve();
 export default {
@@ -49,18 +48,7 @@ export default {
             },
             {
                 test: /\.md$/,
-                use: [
-                    {
-                        loader: 'html-loader',
-                    },
-                    {
-                        loader: 'remark-loader',
-                        options: {
-                            remarkOptions: {
-                                plugins: [RemarkHTML],
-                            },
-                        },
-                    }],
+                use: ['html-loader', 'markdown-loader']
             },
         ],
     },
