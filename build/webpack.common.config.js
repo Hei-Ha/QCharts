@@ -1,5 +1,6 @@
 import path from 'path';
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import RemarkHTML from 'remark-html';
 
 const rootPath = path.resolve();
 export default {
@@ -45,11 +46,26 @@ export default {
                 test: /\.(tsx|ts)$/i,
                 use: ['ts-loader'],
                 exclude: /node_modules/
-            }
+            },
+            {
+                test: /\.md$/,
+                use: [
+                    {
+                        loader: 'html-loader',
+                    },
+                    {
+                        loader: 'remark-loader',
+                        options: {
+                            remarkOptions: {
+                                plugins: [RemarkHTML],
+                            },
+                        },
+                    }],
+            },
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.jsx', '.js'],
+        extensions: ['.tsx', '.ts', '.jsx', '.js', 'md'],
         alias: {
             '@src': path.resolve(rootPath, 'src')
         }

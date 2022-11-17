@@ -4,9 +4,13 @@ import { GridComponent, LegendComponent } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 
+import mdText from '../markdown/BaseColumnChart.md'
+// const mdText = require('../markdown/BaseColumnChart.md');
+
 echarts.use([GridComponent, BarChart, CanvasRenderer, LegendComponent]);
 
 type EChartsCoreOption = echarts.EChartsCoreOption;
+
 
 export const BaseColumnChart = () => {
     // const [leftWidth, setLeftWidth] = useState<number>(600);
@@ -19,6 +23,7 @@ export const BaseColumnChart = () => {
     useEffect(() => {
         init();
         initChart();
+        console.log(mdText)
 
         return () => {
             dragAxis.current && dragAxis.current.removeEventListener('mousedown', DragAxis);
@@ -91,7 +96,8 @@ export const BaseColumnChart = () => {
 
     return <div className='baseColumnWrap flex h-full w-full'>
         <div className='codeWrap select-none' style={{ width: `600px`}}>
-            code
+            123
+            {/*<article dangerouslySetInnerHTML={{ __html: mdText  }}></article>*/}
         </div>
         <div className='dragAxis w-4 h-full bg-#CCCCCC cursor-col-resize' />
         <div className='chartWrap flex grow justify-center h-full bg-#EAEBF2 select-none'>
