@@ -6,15 +6,19 @@ import { CanvasRenderer } from 'echarts/renderers';
 
 echarts.use([GridComponent, BarChart, CanvasRenderer, LegendComponent]);
 
+type EChartsCoreOption = echarts.EChartsCoreOption;
+
 export const BaseColumnChart = () => {
     // const [leftWidth, setLeftWidth] = useState<number>(600);
     const codeWrap = useRef<HTMLDivElement>(null);
     const dragAxis = useRef<HTMLDivElement>(null);
     const chartWrap = useRef<HTMLDivElement>(null);
 
+    const myChart = useRef<echarts.EChartsType>(null);
+
     useEffect(() => {
         init();
-        // initChart();
+        initChart();
 
         return () => {
             dragAxis.current && dragAxis.current.removeEventListener('mousedown', DragAxis);
@@ -43,13 +47,14 @@ export const BaseColumnChart = () => {
             codeWrap.current.style.width = codeWrap.current.offsetWidth + distance + 'px';
             document.onmousemove = null;
             document.onmouseup = null;
+            myChart.current && myChart.current.resize();
         };
     }
 
     const initChart = () => {
         const chartDom = document.getElementById('BaseColumnChart');
-        const myChart = echarts.init(chartDom);
-        let option;
+        myChart.current = echarts.init(chartDom);
+        let option: EChartsCoreOption;
         option = {
             legend: {
                 show: true,
@@ -74,14 +79,14 @@ export const BaseColumnChart = () => {
                     barMinWidth: 40,
                     barMaxWidth: 40,
                     itemStyle: {
-                        normal:{
+                        normal: {
                             color:'#468DFF'
                         }
                     }
                 }
             ]
         };
-        option && myChart.setOption(option);
+        option && myChart.current && myChart.current.setOption(option);
     }
 
     return <div className='baseColumnWrap flex h-full w-full'>
@@ -90,10 +95,10 @@ export const BaseColumnChart = () => {
         </div>
         <div className='dragAxis w-4 h-full bg-#CCCCCC cursor-col-resize' />
         <div className='chartWrap flex grow justify-center h-full bg-#EAEBF2 select-none'>
-            123
-            {/*<div*/}
-            {/*    id='BaseColumnChart'*/}
-            {/*    style={{ height: '100%', width: `calc(100vw - 208px - 600px)` }} />*/}
+            <div
+                id='BaseColumnChart'
+                className='w-full h-full'
+            />
         </div>
     </div>
 }
