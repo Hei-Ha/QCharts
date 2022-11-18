@@ -94,7 +94,7 @@ export const BaseColumnChart = () => {
 
     return <div className='baseColumnWrap flex h-full w-full'>
         <div className='codeWrap select-none' style={{ width: `600px`}}>
-            <article dangerouslySetInnerHTML={{ __html: BaseColumnMd  }}></article>
+            <article className='markdown-body' dangerouslySetInnerHTML={{ __html: BaseColumnMd  }}></article>
         </div>
         <div className='dragAxis w-4 h-full bg-#CCCCCC cursor-col-resize' />
         <div className='chartWrap flex grow justify-center h-full bg-#EAEBF2 select-none'>
