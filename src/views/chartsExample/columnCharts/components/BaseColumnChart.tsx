@@ -1,62 +1,26 @@
 import React, {useEffect, useRef, useState} from 'react';
 import * as echarts from 'echarts/core';
-import { GridComponent, LegendComponent } from 'echarts/components';
-import { BarChart } from 'echarts/charts';
-import { CanvasRenderer } from 'echarts/renderers';
+import {GridComponent, LegendComponent} from 'echarts/components';
+import {BarChart} from 'echarts/charts';
+import {CanvasRenderer} from 'echarts/renderers';
 
 import BaseColumnMd from '../markdown/BaseColumnChart.md'
+import {DocumentLayout} from '@src/components/documentLayout';
 
 echarts.use([GridComponent, BarChart, CanvasRenderer, LegendComponent]);
-
 type EChartsCoreOption = echarts.EChartsCoreOption;
 
 
 export const BaseColumnChart = () => {
-    // const [leftWidth, setLeftWidth] = useState<number>(600);
-    const codeWrap = useRef<HTMLDivElement>(null);
-    const dragAxis = useRef<HTMLDivElement>(null);
-    const chartWrap = useRef<HTMLDivElement>(null);
-
-    const myChart = useRef<echarts.EChartsType>(null);
+    const currentChartInstance = useRef<echarts.EChartsType>(null);
 
     useEffect(() => {
-        init();
         initChart();
-
-        return () => {
-            dragAxis.current && dragAxis.current.removeEventListener('mousedown', DragAxis);
-        }
     }, [])
-
-
-    const init = () => {
-        codeWrap.current = document.getElementsByClassName('codeWrap')[0] as HTMLDivElement;
-        dragAxis.current = document.getElementsByClassName('dragAxis')[0] as HTMLDivElement;
-        chartWrap.current = document.getElementsByClassName('chartWrap')[0] as HTMLDivElement;
-
-        dragAxis.current && dragAxis.current.addEventListener('mousedown', DragAxis);
-    }
-
-
-    const DragAxis = (e: MouseEvent) => {
-        if (!codeWrap.current || !dragAxis.current) return;
-        document.onmousemove = (ev) => {
-            // let distance = ev.clientX - e.clientX;
-            // dragAxis.current.style.transform = `translateX(${distance})px`;
-        };
-
-        document.onmouseup = (ev) => {
-            let distance = ev.clientX - e.clientX;
-            codeWrap.current.style.width = codeWrap.current.offsetWidth + distance + 'px';
-            document.onmousemove = null;
-            document.onmouseup = null;
-            myChart.current && myChart.current.resize();
-        };
-    }
 
     const initChart = () => {
         const chartDom = document.getElementById('BaseColumnChart');
-        myChart.current = echarts.init(chartDom);
+        currentChartInstance.current = echarts.init(chartDom);
         let option: EChartsCoreOption;
         option = {
             legend: {
@@ -83,25 +47,25 @@ export const BaseColumnChart = () => {
                     barMaxWidth: 40,
                     itemStyle: {
                         normal: {
-                            color:'#468DFF'
+                            color: '#468DFF'
                         }
                     }
                 }
             ]
         };
-        option && myChart.current && myChart.current.setOption(option);
+        option && currentChartInstance.current && currentChartInstance.current.setOption(option);
     }
 
-    return <div className='baseColumnWrap flex h-full w-full'>
-        <div className='codeWrap select-none' style={{ width: `600px`}}>
-            <article className='markdown-body' dangerouslySetInnerHTML={{ __html: BaseColumnMd  }}></article>
-        </div>
-        <div className='dragAxis w-4 h-full bg-#CCCCCC cursor-col-resize' />
-        <div className='chartWrap flex grow justify-center h-full bg-#EAEBF2 select-none'>
-            <div
-                id='BaseColumnChart'
-                className='w-full h-full'
-            />
-        </div>
-    </div>
+    const chartDom: React.FC = () => {
+        return <div
+            id='BaseColumnChart'
+            className='w-full h-full'
+        />
+    }
+
+    return <DocumentLayout
+        mdContent={BaseColumnMd}
+        chartDom={chartDom}
+        axisChange={() => { currentChartInstance.current.resize() }}
+    />
 }
