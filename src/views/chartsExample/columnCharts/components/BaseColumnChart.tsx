@@ -57,10 +57,13 @@ export const BaseColumnChart = () => {
     }
 
     const chartDom: React.FC = () => {
-        return <div
-            id='BaseColumnChart'
-            className='w-full h-full'
-        />
+        return <div className='flex w-full h-full pb-5'>
+            <div className='header h-5'> header</div>
+            <div
+                id='BaseColumnChart'
+                className='w-full h-calc[100%-40px]'
+            />
+        </div>
     }
 
     return <DocumentLayout
