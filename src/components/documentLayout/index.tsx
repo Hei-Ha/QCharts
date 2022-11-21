@@ -1,18 +1,23 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import AceEditor from 'react-ace';
 import "ace-builds/src-noconflict/theme-github";
 import "ace-builds/src-noconflict/mode-javascript";
+import "ace-builds/src-noconflict/ext-language_tools"
+
 
 interface PropsType {
     mdContent: string;
     chartDom: React.FC;
     axisChange: Function;
+    optionCode: JSON;
+    onOptionChange: Function;
 }
 
 export const DocumentLayout = (props: PropsType) => {
     const leftWrap = useRef<HTMLDivElement>(null);
     const dragAxis = useRef<HTMLDivElement>(null);
     const rightWrap = useRef<HTMLDivElement>(null);
+    const editorId = (new Date()).getTime();
 
     useEffect(() => {
         init();
@@ -44,17 +49,27 @@ export const DocumentLayout = (props: PropsType) => {
 
 
     return <div className='flex h-full w-full'>
-        <div className='leftWrap' style={{ width: `600px`}}>
-            <article className='markdown-body' dangerouslySetInnerHTML={{ __html: props.mdContent }} />
+        <div className='leftWrap border-r border-solid border-#D9DBE1' style={{ width: `600px`}}>
+            {/*<article className='markdown-body' dangerouslySetInnerHTML={{ __html: props.mdContent }} />*/}
+            <div className='h-10 pl-5 flex items-center bg-#F0F1F8'>
+                配置代码
+            </div>
             <AceEditor
                 mode="javascript"
                 theme="github"
-                onChange={() => {console.log(1)} }
-                name="UNIQUE_ID_OF_DIV"
+                name={String(editorId)}
                 editorProps={{ $blockScrolling: true }}
-                defaultValue={'ndasda'}
                 style={{ width: '100%', height: '100%'}}
-                setOptions={{'useWorker': false}}
+                value={JSON.stringify(props.optionCode, null, 4)}
+                setOptions={{
+                    useWorker: false,
+                    tabSize: 4,
+                }}
+                debounceChangePeriod={1500}
+                onPaste={() => {}}
+                onChange={(newValue) => {
+                    props.onOptionChange(JSON.parse(newValue));
+                }}
             />
         </div>
         <div className='dragAxis w-1 h-full bg-#F0F1F8 cursor-col-resize' />

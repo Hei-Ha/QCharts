@@ -14,6 +14,37 @@ type EChartsCoreOption = echarts.EChartsCoreOption;
 
 export const BaseColumnChart = () => {
     const currentChartInstance = useRef<echarts.EChartsType>(null);
+    const [configOption, setConfigOption] = useState<EChartsCoreOption>({
+        legend: {
+            show: true,
+            bottom: 10,
+            icon: 'circle'
+        },
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            axisTick: {
+                alignWithLabel: true,
+            }
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [
+            {
+                name: 'Mon',
+                data: [120, 200, 150, 80, 70, 110, 130],
+                type: 'bar',
+                barMinWidth: 40,
+                barMaxWidth: 40,
+                itemStyle: {
+                    normal: {
+                        color: '#468DFF'
+                    }
+                }
+            }
+        ]
+    });
 
     useEffect(() => {
         initChart();
@@ -22,8 +53,7 @@ export const BaseColumnChart = () => {
     const initChart = () => {
         const chartDom = document.getElementById('BaseColumnChart');
         currentChartInstance.current = echarts.init(chartDom);
-        let option: EChartsCoreOption;
-        option = {
+        let option = {
             legend: {
                 show: true,
                 bottom: 10,
@@ -65,7 +95,7 @@ export const BaseColumnChart = () => {
         //         className='w-full h-calc[100%-40px]'
         //     />
         // </Card>
-        return <div className='flex w-full h-full pb-5 bg-#CCCCCC'>
+        return <div className='flex w-full h-full pb-5 bg-#FFFFFF'>
             <div className='header h-5 bg-#CCCCCC'>header</div>
             <div
                 id='BaseColumnChart'
@@ -74,9 +104,18 @@ export const BaseColumnChart = () => {
         </div>
     }
 
+
+    const reloadChart = (option: EChartsCoreOption) => {
+        option && currentChartInstance.current.setOption(option);
+    }
+
     return <DocumentLayout
         mdContent={BaseColumnMd}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
+        optionCode={configOption as unknown as JSON}
+        onOptionChange={(value: Object) => {
+            reloadChart(value as unknown as EChartsCoreOption)
+        }}
     />
 }
