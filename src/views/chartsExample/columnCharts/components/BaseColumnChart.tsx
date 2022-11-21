@@ -1,15 +1,15 @@
 import React, {useEffect, useRef, useState} from 'react';
-import * as echarts from 'echarts/core';
-import {GridComponent, LegendComponent} from 'echarts/components';
-import {BarChart} from 'echarts/charts';
-import {CanvasRenderer} from 'echarts/renderers';
-
 import { Card } from '@arco-design/web-react';
 import BaseColumnMd from '../markdown/BaseColumnChart.md';
 import {DocumentLayout} from '@src/components/documentLayout';
 
+import * as echarts from 'echarts/core';
+import {GridComponent, LegendComponent} from 'echarts/components';
+import {BarChart} from 'echarts/charts';
+import {CanvasRenderer} from 'echarts/renderers';
+import { EChartsCoreOption } from '@src/type/type';
+
 echarts.use([GridComponent, BarChart, CanvasRenderer, LegendComponent]);
-type EChartsCoreOption = echarts.EChartsCoreOption;
 
 
 export const BaseColumnChart = () => {
@@ -113,9 +113,9 @@ export const BaseColumnChart = () => {
         mdContent={BaseColumnMd}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
-        optionCode={configOption as unknown as JSON}
-        onOptionChange={(value: Object) => {
-            reloadChart(value as unknown as EChartsCoreOption)
+        configOption={configOption as unknown as JSON}
+        onOptionChange={(value: EChartsCoreOption) => {
+            reloadChart(value);
         }}
     />
 }

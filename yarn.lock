@@ -1107,6 +1107,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/echarts@^4.9.16":
+  version "4.9.16"
+  resolved "https://registry.yarnpkg.com/@types/echarts/-/echarts-4.9.16.tgz#7156aea4623f3543b083200f6c65e04d3693bcc8"
+  integrity sha512-bfiagfPw3dWauAIJ9fgoJQoL4hLWlGcltqwbE6LGye0NIY5xnbZau+mDmadCzGojic3MWuFDCUiO25kl4sRGeA==
+  dependencies:
+    "@types/zrender" "*"
+
 "@types/eslint-scope@^3.7.3":
   version "3.7.4"
   resolved "https://registry.yarnpkg.com/@types/eslint-scope/-/eslint-scope-3.7.4.tgz#37fc1223f0786c39627068a12e94d6e6fc61de16"
@@ -1253,6 +1260,11 @@
   integrity sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==
   dependencies:
     "@types/node" "*"
+
+"@types/zrender@*":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@types/zrender/-/zrender-4.0.3.tgz#d18b31648b2f11b9ec672a560836e1887a965ec1"
+  integrity sha512-EPI269lkHNsObwILJ1k1z7znLjKyePuWRy/XKK0shSGpBb9cIX307arcwJV4+2NeZj5wEjN06r4D8yFv7sI06g==
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"

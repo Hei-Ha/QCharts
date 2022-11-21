@@ -2,14 +2,14 @@ import React, {useEffect, useRef, useState} from "react";
 import AceEditor from 'react-ace';
 import "ace-builds/src-noconflict/theme-github";
 import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/ext-language_tools"
+import "ace-builds/src-noconflict/ext-language_tools";
 
 
 interface PropsType {
     mdContent: string;
     chartDom: React.FC;
     axisChange: Function;
-    optionCode: JSON;
+    configOption: JSON;
     onOptionChange: Function;
 }
 
@@ -60,7 +60,7 @@ export const DocumentLayout = (props: PropsType) => {
                 name={String(editorId)}
                 editorProps={{ $blockScrolling: true }}
                 style={{ width: '100%', height: '100%'}}
-                value={JSON.stringify(props.optionCode, null, 4)}
+                value={JSON.stringify(props.configOption, null, 4)}
                 setOptions={{
                     useWorker: false,
                     tabSize: 4,
