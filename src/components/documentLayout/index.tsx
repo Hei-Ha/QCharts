@@ -51,6 +51,7 @@ export const DocumentLayout = (props: PropsType) => {
     return <div className='flex h-full w-full'>
         <div className='leftWrap border-r border-solid border-#D9DBE1' style={{ width: `600px`}}>
             {/*<article className='markdown-body' dangerouslySetInnerHTML={{ __html: props.mdContent }} />*/}
+            {/*<div></div>*/}
             <div className='h-10 pl-5 flex items-center bg-#F0F1F8'>
                 配置代码
             </div>
