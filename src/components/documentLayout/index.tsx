@@ -1,4 +1,7 @@
 import React, {useEffect, useRef} from "react";
+import AceEditor from 'react-ace';
+import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/src-noconflict/mode-javascript";
 
 interface PropsType {
     mdContent: string;
@@ -43,9 +46,19 @@ export const DocumentLayout = (props: PropsType) => {
     return <div className='flex h-full w-full'>
         <div className='leftWrap' style={{ width: `600px`}}>
             <article className='markdown-body' dangerouslySetInnerHTML={{ __html: props.mdContent }} />
+            <AceEditor
+                mode="javascript"
+                theme="github"
+                onChange={() => {console.log(1)} }
+                name="UNIQUE_ID_OF_DIV"
+                editorProps={{ $blockScrolling: true }}
+                defaultValue={'ndasda'}
+                style={{ width: '100%', height: '100%'}}
+                setOptions={{'useWorker': false}}
+            />
         </div>
-        <div className='dragAxis w-4 h-full bg-#CCCCCC cursor-col-resize' />
-        <div className='rightWrap flex flex-auto justify-center h-full bg-#EAEBF2 select-none'>
+        <div className='dragAxis w-1 h-full bg-#F0F1F8 cursor-col-resize' />
+        <div className='rightWrap flex flex-auto justify-center h-full bg-#F0F1F8 select-none pl-4 pr-5 py-20'>
             <props.chartDom />
         </div>
     </div>

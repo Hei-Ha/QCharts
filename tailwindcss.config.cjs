@@ -11,6 +11,7 @@ module.exports = {
             '#F2F3F8': '#F2F3F8',
             '#1D2129': '#1D2129',
             '#EAEBF2': '#EAEBF2',
+            '#F0F1F8': '#F0F1F8',
         }
     },
     plugins: []

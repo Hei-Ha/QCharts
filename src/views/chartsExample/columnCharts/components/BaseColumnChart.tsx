@@ -4,7 +4,8 @@ import {GridComponent, LegendComponent} from 'echarts/components';
 import {BarChart} from 'echarts/charts';
 import {CanvasRenderer} from 'echarts/renderers';
 
-import BaseColumnMd from '../markdown/BaseColumnChart.md'
+import { Card } from '@arco-design/web-react';
+import BaseColumnMd from '../markdown/BaseColumnChart.md';
 import {DocumentLayout} from '@src/components/documentLayout';
 
 echarts.use([GridComponent, BarChart, CanvasRenderer, LegendComponent]);
@@ -57,8 +58,15 @@ export const BaseColumnChart = () => {
     }
 
     const chartDom: React.FC = () => {
-        return <div className='flex w-full h-full pb-5'>
-            <div className='header h-5'> header</div>
+        // return <Card className='flex w-full h-full pb-5 bg-#CCCCCC'>
+        //     {/*<div className='header h-5 bg-#CCCCCC'>header</div>*/}
+        //     <div
+        //         id='BaseColumnChart'
+        //         className='w-full h-calc[100%-40px]'
+        //     />
+        // </Card>
+        return <div className='flex w-full h-full pb-5 bg-#CCCCCC'>
+            <div className='header h-5 bg-#CCCCCC'>header</div>
             <div
                 id='BaseColumnChart'
                 className='w-full h-calc[100%-40px]'
