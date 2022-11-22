@@ -9,7 +9,7 @@ export const ColumnCharts = () => {
                 基础柱状图
             </Button>
         </Link>
-        <Link to='/charts/columnCharts/base'>
+        <Link to='/charts/columnCharts/grouped'>
             <Button type='primary'>
                 分组柱状图
             </Button>
