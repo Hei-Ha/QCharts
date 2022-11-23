@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { Menu } from '@arco-design/web-react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {getUIModeSlice} from "@src/store/reducer/UIMode";
+import {switchUiToNight, switchUIToDay}  from '@src/store/reducer/UIMode';
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
 
 export const BaseMenu = () => {
+    const dispatch = useDispatch();
+    const UIMode = useSelector(getUIModeSlice);
     const [defaultSelectKeys, setDefaultSelectKeys] = useState<string[]>(['charts']);
+
     return <Menu
         mode='horizontal'
         theme='dark'
@@ -13,7 +19,7 @@ export const BaseMenu = () => {
         className='box-border'
         onClickMenuItem={(key) => { setDefaultSelectKeys([key]) }}
     >
-        <MenuItem key='icon' disabled>
+        <MenuItem key='QCraftIcon' disabled>
             <div className='h-8 w-32 leading-8 flex items-center mr-3 cursor-pointer select-none'>
                 <Link key='icon' to='/home'>
                     <img src="https://img.qcraftai.com/qdata/images/qdata/logo.png" alt="homeIcon"/>
@@ -32,6 +38,18 @@ export const BaseMenu = () => {
                 Link to text
             </MenuItem>
         </Link>
-    </Menu>
 
+        <MenuItem key=''>
+            {UIMode === 'day' ?
+                <div className='w-6 h-6' onClick={() => { dispatch(switchUiToNight()) }}>
+                    <img src="https://img.qcraftai.com/qdata/images/qdata/day.png" alt="day"/>
+                </div>
+                :
+                <div className='w-6 h-6' onClick={() => { dispatch(switchUIToDay()) }}>
+                    <img src="https://img.qcraftai.com/qdata/images/qdata/night.png" alt="night"/>
+                </div>
+            }
+        </MenuItem>
+
+    </Menu>
 }
