@@ -14,5 +14,15 @@ export const ColumnCharts = () => {
                 分组柱状图
             </Button>
         </Link>
+        <Link to='/charts/columnCharts/stacked'>
+            <Button type='primary'>
+                堆叠柱状图
+            </Button>
+        </Link>
+        <Link to='/charts/columnCharts/percentStacked'>
+            <Button type='primary'>
+                百分比堆叠柱状图
+            </Button>
+        </Link>
     </div>
 }

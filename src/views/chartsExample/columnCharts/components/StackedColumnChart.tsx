@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { DocumentLayout } from '@src/components/documentLayout';
 import * as echarts from 'echarts/core';
 import { GridComponent, LegendComponent } from 'echarts/components';
@@ -8,12 +8,12 @@ import { EChartsCoreOption } from '@src/type/type';
 
 echarts.use([GridComponent, BarChart, CanvasRenderer, LegendComponent]);
 
-export const GroupedColumnChart = () => {
+export const StackedColumnChart = () => {
     const currentChartInstance = useRef<echarts.EChartsType>(null);
     let configOption = {
         // TODO：这里title不显示？？
         title: {
-            text: '分组柱状图',
+            text: '堆叠柱状图',
         },
         legend: {
             show: true,
@@ -22,7 +22,7 @@ export const GroupedColumnChart = () => {
         },
         xAxis: {
             type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            data: ['2:00', '4:00', '6:00', '8:00', '10:00', '12:00', '14:00'],
             axisTick: {
                 alignWithLabel: true,
             }
@@ -35,8 +35,9 @@ export const GroupedColumnChart = () => {
         series: [
             {
                 name: 'A类别',
-                data: [40, 20, 25, 55, 33, 89, 97],
+                data: [10, 3, 25, 12, 23, 9, 7],
                 type: 'bar',
+                stack: 'total',
                 barGap: 0,
                 barMinWidth: 40,
                 barMaxWidth: 40,
@@ -48,14 +49,57 @@ export const GroupedColumnChart = () => {
             },
             {
                 name: 'B类别',
-                data: [66, 93, 33, 59, 26, 78, 47],
+                data: [26, 34, 33, 32, 6, 28, 27],
                 type: 'bar',
+                stack: 'total',
                 barGap: 0,
                 barMinWidth: 40,
                 barMaxWidth: 40,
                 itemStyle: {
                     normal: {
                         color: '#86DF6C'
+                    }
+                }
+            },
+            {
+                name: 'C类别',
+                data: [46, 12, 10, 12, 16, 13, 17],
+                type: 'bar',
+                stack: 'total',
+                barGap: 0,
+                barMinWidth: 40,
+                barMaxWidth: 40,
+                itemStyle: {
+                    normal: {
+                        color: '#846BCE'
+                    }
+                }
+            },
+            {
+                name: 'D类别',
+                data: [6, 7, 2, 10, 10, 18, 37],
+                type: 'bar',
+                stack: 'total',
+                barGap: 0,
+                barMinWidth: 40,
+                barMaxWidth: 40,
+                itemStyle: {
+                    normal: {
+                        color: '#FEC745'
+                    }
+                }
+            },
+            {
+                name: 'E类别',
+                data: [9, 27, 21, 3, 26, 20, 7],
+                type: 'bar',
+                stack: 'total',
+                barGap: 0,
+                barMinWidth: 40,
+                barMaxWidth: 40,
+                itemStyle: {
+                    normal: {
+                        color: '#E55D8F'
                     }
                 }
             }

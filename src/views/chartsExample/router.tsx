@@ -10,7 +10,8 @@ import {LineCharts} from "@src/views/chartsExample/lineCharts/LineCharts";
 
 import { BaseColumnChart } from '@src/views/chartsExample/columnCharts/components/BaseColumnChart';
 import { GroupedColumnChart } from '@src/views/chartsExample/columnCharts/components/GroupedColumnChart';
-
+import { StackedColumnChart } from '@src/views/chartsExample/columnCharts/components/StackedColumnChart';
+import { PercentStackedColumnChart } from '@src/views/chartsExample/columnCharts/components/PercentStackedColumnChart';
 
 
 export const subRoute = () => {
@@ -18,8 +19,8 @@ export const subRoute = () => {
         <Route path='columnCharts' element={<ColumnCharts/>} />
         <Route path='columnCharts/base' element={<BaseColumnChart />} />
         <Route path='columnCharts/grouped' element={<GroupedColumnChart />} />
-
-
+        <Route path='columnCharts/stacked' element={<StackedColumnChart />} />
+        <Route path='columnCharts/percentStacked' element={<PercentStackedColumnChart />} />
         <Route path='lineCharts' element={<LineCharts/>}/>
     </Route>
 }
