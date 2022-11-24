@@ -15,8 +15,14 @@ export const UIModeSlice = createSlice({
     }
 })
 
-export const {switchUiToNight, switchUIToDay} = UIModeSlice.actions;
+const {switchUiToNight, switchUIToDay} = UIModeSlice.actions;
 
-export const getUIModeSlice = (state: { UIMode: { value: any; }; }) => state.UIMode.value
+const getUIModeSlice = (state: { UIMode: { value: any; }; }) => state.UIMode.value
+
+export {
+    switchUiToNight,
+    switchUIToDay,
+    getUIModeSlice
+}
 
 export default UIModeSlice.reducer;

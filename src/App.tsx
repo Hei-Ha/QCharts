@@ -1,10 +1,10 @@
 import React from 'react';
 import {Layout} from "@arco-design/web-react";
-import {BaseMenu} from "@src/menu/menu";
 import {Routers} from '@src/router/routers';
 import {HashRouter, Outlet} from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from '@src/store/store';
+import {TopBar} from "@src/components/topBar";
 
 
 const Header = Layout.Header;
@@ -16,7 +16,7 @@ export const App = () => {
             <HashRouter>
                 <Layout>
                     <Header>
-                        <BaseMenu/>
+                        <TopBar/>
                     </Header>
                     <Content>
                         <Routers />

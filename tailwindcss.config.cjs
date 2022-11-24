@@ -4,6 +4,9 @@ module.exports = {
         extend: {
             width: {
                 '40%': '40%',
+            },
+            height: {
+                '50px': '50px'
             }
         },
         colors: {
@@ -13,7 +16,7 @@ module.exports = {
             '#EAEBF2': '#EAEBF2',
             '#F0F1F8': '#F0F1F8',
             '#FFFFFF': '#FFFFFF',
-            '#D9DBE1': '#D9DBE1'
+            '#D9DBE1': '#D9DBE1',
         }
     },
     plugins: []
