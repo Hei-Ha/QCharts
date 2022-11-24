@@ -3,25 +3,25 @@ import { createSlice } from '@reduxjs/toolkit';
 export const UIModeSlice = createSlice({
     name: 'UIMode',
     initialState: {
-        value: 'night'
+        value: 'light'
     },
     reducers: {
-        switchUiToNight: (state) => {
-            state.value = 'night'
+        switchUiToDark: (state) => {
+            state.value = 'dark'
         },
-        switchUIToDay: (state) => {
-            state.value = 'day'
+        switchUIToLight: (state) => {
+            state.value = 'light'
         }
     }
 })
 
-const {switchUiToNight, switchUIToDay} = UIModeSlice.actions;
+const {switchUiToDark, switchUIToLight} = UIModeSlice.actions;
 
-const getUIModeSlice = (state: { UIMode: { value: any; }; }) => state.UIMode.value
+const getUIModeSlice = (state: { UIMode: { value: 'dark' | 'light'; }; }) => state.UIMode.value;
 
 export {
-    switchUiToNight,
-    switchUIToDay,
+    switchUiToDark,
+    switchUIToLight,
     getUIModeSlice
 }
 

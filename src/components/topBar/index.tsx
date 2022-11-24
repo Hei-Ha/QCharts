@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {getUIModeSlice} from "@src/store/reducer/UIMode";
-import {switchUiToNight, switchUIToDay}  from '@src/store/reducer/UIMode';
+import {switchUiToDark, switchUIToLight}  from '@src/store/reducer/UIMode';
 
 export const TopBar = () => {
     const dispatch = useDispatch();
@@ -15,12 +15,12 @@ export const TopBar = () => {
             </Link>
         </div>
         <div className='mr-10'>
-            {UIMode === 'day' ?
-                <div className='w-6 h-6' onClick={() => { dispatch(switchUiToNight()) }}>
+            {UIMode === 'light' ?
+                <div className='w-6 h-6' onClick={() => { dispatch(switchUiToDark()) }}>
                     <img src="https://img.qcraftai.com/qdata/images/qdata/day.png" alt="day"/>
                 </div>
                 :
-                <div className='w-6 h-6' onClick={() => { dispatch(switchUIToDay()) }}>
+                <div className='w-6 h-6' onClick={() => { dispatch(switchUIToLight()) }}>
                     <img src="https://img.qcraftai.com/qdata/images/qdata/night.png" alt="night"/>
                 </div>
             }
