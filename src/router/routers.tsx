@@ -12,7 +12,7 @@ import { subRoute } from "@src/views/chartsExample/router";
 export const Routers = () => {
     return <Routes>
         <Route path='/test' element={<Test />} />
-        {/*<Route path='*' element={<Navigate to='/charts/columnCharts' replace />} />*/}
+        <Route path='*' element={<Navigate to='/charts/columnCharts' replace />} />
         {subRoute()}
     </Routes>
 }
