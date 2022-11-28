@@ -12,8 +12,9 @@ export const SlidMenu = () => {
 
 
     return <div>
-        <div className='text-#FFFFFF border-b border-solid border-#E4E8EF h-12'>
-            轻舟图表
+        <div className='bg-#FFFFFF text-#1D2129 font-medium text-sm border-b border-solid border-#E4E8EF h-12 flex items-center pl-5'>
+            <img className='w-4 h-4' src="https://img.qcraftai.com/qchart/chartListIcon.png" alt="chartListIcon"/>
+            <span className='ml-2'>轻舟图表</span>
         </div>
         <Menu
             mode='vertical'
@@ -22,9 +23,6 @@ export const SlidMenu = () => {
             className='w-full h-full box-border'
             onClickMenuItem={(key) => { setCurrentSelectKey([key]) }}
         >
-            {/*<MenuItem key='QCraftChart' disabled className='text-#FFFFFF border-b border-solid border-#E4E8EF'>*/}
-            {/*    轻舟图表*/}
-            {/*</MenuItem>*/}
             <Link to='/charts/columnCharts'>
                 <MenuItem key='columnCharts'>
                     柱状图
