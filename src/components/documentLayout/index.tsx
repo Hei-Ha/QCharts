@@ -21,8 +21,11 @@ export const DocumentLayout = (props: PropsType) => {
     const editorId = (new Date()).getTime();
     const [activeTab, setActiveTab] = useState<string>('codeEdit');
 
+    const [currentOption, setCurrentOption] = useState<string>('');
+
     useEffect(() => {
         init();
+        initCode();
 
         return () => {
             dragAxis.current && dragAxis.current.removeEventListener('mousedown', DragAxis);
@@ -49,8 +52,13 @@ export const DocumentLayout = (props: PropsType) => {
         };
     }
 
-    const editor = (code: JSON) => {
-        let value = JSON.stringify(code, null, 4);
+
+    // 初始化编辑器 code
+    const initCode = () => {
+        setCurrentOption(JSON.stringify(props.configOption, null, 4));
+    }
+
+    const editor = (code: string) => {
         return <AceEditor
             mode="javascript"
             theme="github"
@@ -60,7 +68,7 @@ export const DocumentLayout = (props: PropsType) => {
                 width: '100%',
                 height: 'calc(100vh - 50px - 40px - 38px)',
             }}
-            value={value}
+            value={code}
             setOptions={{
                 useWorker: false,
                 tabSize: 4,
@@ -68,6 +76,7 @@ export const DocumentLayout = (props: PropsType) => {
             debounceChangePeriod={1500}
             onChange={(newValue) => {
                 props.onOptionChange(JSON.parse(newValue));
+                setCurrentOption(newValue);
             }}
         />
     }
@@ -83,7 +92,7 @@ export const DocumentLayout = (props: PropsType) => {
                 className='h-full w-full'
                 extra={(
                     <div>
-                        <Button size='mini' className='btn mr-3'>重制</Button>
+                        <Button size='mini' className='btn mr-3' onClick={() => { initCode() }}>重制</Button>
                         <Button size='mini' type='primary'>运行</Button>
                     </div>
                 )}
@@ -93,14 +102,14 @@ export const DocumentLayout = (props: PropsType) => {
                     key='codeEdit'
                     className='bg-#FFFFFF'
                 >
-                    {editor(props.configOption)}
+                    {editor(currentOption)}
                 </Tabs.TabPane>
                 <Tabs.TabPane
                     title='完整代码'
                     key='fullCode'
                     className='bg-#FFFFFF'
                 >
-                    {editor(props.configOption)}
+                    {editor(currentOption)}
                 </Tabs.TabPane>
             </Tabs>
         </div>
