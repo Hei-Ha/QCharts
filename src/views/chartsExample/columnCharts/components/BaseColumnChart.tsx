@@ -60,11 +60,12 @@ export const BaseColumnChart = () => {
         //         className='w-full h-calc[100%-40px]'
         //     />
         // </Card>
-        return <div className='flex w-full h-full pb-5 bg-#FFFFFF'>
-            <div className='header h-5 bg-#CCCCCC'>header</div>
+        return <div className='flex flex-col w-full h-full pb-5 bg-#FFFFFF'>
+            <div className='header h-5 w-full'>柱状图</div>
             <div
                 id='BaseColumnChart'
-                className='w-full h-calc[100%-40px]'
+                // className='w-full h-calc[100%-40px]'
+                className='w-full h-400px'
             />
         </div>
     }

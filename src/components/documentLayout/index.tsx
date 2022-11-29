@@ -58,7 +58,7 @@ export const DocumentLayout = (props: PropsType) => {
             editorProps={{$blockScrolling: true}}
             style={{
                 width: '100%',
-                height: 'calc(100vh - 50px - 40px - 36px)',
+                height: 'calc(100vh - 50px - 40px - 38px)',
             }}
             value={value}
             setOptions={{
@@ -73,7 +73,7 @@ export const DocumentLayout = (props: PropsType) => {
     }
 
 
-    return <div className={`${documentLayoutStyle.documentLayout} flex h-full w-full p-4`}>
+    return <div className={`${documentLayoutStyle.documentLayout} flex h-full w-full p-5`}>
         <div className='leftWrap h-full' style={{width: `600px`}}> {/*border-r border-solid border-#D9DBE1*/}
             <Tabs
                 type={'card'}
@@ -104,9 +104,11 @@ export const DocumentLayout = (props: PropsType) => {
                 </Tabs.TabPane>
             </Tabs>
         </div>
-        <div className='dragAxis w-1 h-full bg-#F0F1F8 cursor-col-resize'/>
-        <div className='rightWrap flex flex-auto justify-center h-full bg-#F0F1F8 select-none pl-4 pr-5 py-20'>
-            <props.chartDom/>
+        <div className='dragAxis w-1 h-full bg-#F0F1F8 cursor-col-resize mr-4'/>
+        <div className='rightWrap bg-#FFFFFF flex flex-auto flex-col h-calc[100vh-50px-40px] select-none p-5'>
+            <div className='p-5 h-full w-full border border-solid border-#E5E8EF overflow-scroll'>
+                <props.chartDom />
+            </div>
         </div>
     </div>
 }

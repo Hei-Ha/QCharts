@@ -7,7 +7,13 @@ module.exports = {
                 '88px': '88px',
             },
             height: {
-                '50px': '50px'
+                '50px': '50px',
+                '500px': '500px',
+                '400px': '400px',
+                '300px': '300px',
+            },
+            minHeight: {
+                '800px': '800px',
             }
         },
         colors: {
