@@ -4,6 +4,7 @@ module.exports = {
         extend: {
             width: {
                 '40%': '40%',
+                '88px': '88px',
             },
             height: {
                 '50px': '50px'
@@ -19,6 +20,7 @@ module.exports = {
             '#D9DBE1': '#D9DBE1',
             '#E4E8EF': '#E4E8EF',
             '#232324': '#232324',
+            '#E5E8EF': '#E5E8EF'
         }
     },
     plugins: []

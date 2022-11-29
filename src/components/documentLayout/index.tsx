@@ -1,5 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import AceEditor from 'react-ace';
+import {Tabs, Button} from "@arco-design/web-react";
+import documentLayoutStyle from './index.module.less';
 import "ace-builds/src-noconflict/theme-github";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/ext-language_tools";
@@ -17,6 +19,7 @@ export const DocumentLayout = (props: PropsType) => {
     const dragAxis = useRef<HTMLDivElement>(null);
     const rightWrap = useRef<HTMLDivElement>(null);
     const editorId = (new Date()).getTime();
+    const [activeTab, setActiveTab] = useState<string>('codeEdit');
 
     useEffect(() => {
         init();
@@ -46,33 +49,64 @@ export const DocumentLayout = (props: PropsType) => {
         };
     }
 
+    const editor = (code: JSON) => {
+        let value = JSON.stringify(code, null, 4);
+        return <AceEditor
+            mode="javascript"
+            theme="github"
+            name={String(editorId)}
+            editorProps={{$blockScrolling: true}}
+            style={{
+                width: '100%',
+                height: 'calc(100vh - 50px - 40px - 36px)',
+            }}
+            value={value}
+            setOptions={{
+                useWorker: false,
+                tabSize: 4,
+            }}
+            debounceChangePeriod={1500}
+            onChange={(newValue) => {
+                props.onOptionChange(JSON.parse(newValue));
+            }}
+        />
+    }
 
-    return <div className='flex h-full w-full'>
-        <div className='leftWrap border-r border-solid border-#D9DBE1' style={{ width: `600px`}}>
-            <div className='h-10 pl-5 flex items-center bg-#F0F1F8'>
-                配置代码
-            </div>
-            <AceEditor
-                mode="javascript"
-                theme="github"
-                name={String(editorId)}
-                editorProps={{ $blockScrolling: true }}
-                style={{ width: '100%', height: '100%'}}
-                value={JSON.stringify(props.configOption, null, 4)}
-                setOptions={{
-                    useWorker: false,
-                    tabSize: 4,
-                }}
-                debounceChangePeriod={1500}
-                onPaste={() => {}}
-                onChange={(newValue) => {
-                    props.onOptionChange(JSON.parse(newValue));
-                }}
-            />
+
+    return <div className={`${documentLayoutStyle.documentLayout} flex h-full w-full p-4`}>
+        <div className='leftWrap h-full' style={{width: `600px`}}> {/*border-r border-solid border-#D9DBE1*/}
+            <Tabs
+                type={'card'}
+                defaultActiveTab='codeEdit'
+                activeTab={activeTab}
+                onChange={(tab) => {setActiveTab(tab)}}
+                className='h-full w-full'
+                extra={(
+                    <div>
+                        <Button size='mini' className='btn mr-3'>重制</Button>
+                        <Button size='mini' type='primary'>运行</Button>
+                    </div>
+                )}
+            >
+                <Tabs.TabPane
+                    title='代码编辑'
+                    key='codeEdit'
+                    className='bg-#FFFFFF'
+                >
+                    {editor(props.configOption)}
+                </Tabs.TabPane>
+                <Tabs.TabPane
+                    title='完整代码'
+                    key='fullCode'
+                    className='bg-#FFFFFF'
+                >
+                    {editor(props.configOption)}
+                </Tabs.TabPane>
+            </Tabs>
         </div>
-        <div className='dragAxis w-1 h-full bg-#F0F1F8 cursor-col-resize' />
+        <div className='dragAxis w-1 h-full bg-#F0F1F8 cursor-col-resize'/>
         <div className='rightWrap flex flex-auto justify-center h-full bg-#F0F1F8 select-none pl-4 pr-5 py-20'>
-            <props.chartDom />
+            <props.chartDom/>
         </div>
     </div>
 }
