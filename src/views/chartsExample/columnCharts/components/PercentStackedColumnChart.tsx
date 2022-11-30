@@ -19,10 +19,6 @@ export const PercentStackedColumnChart = () => {
     //     arrCPercent: [40, 30, 20, 20, 65, 35, 40],
     // }
     let configOption = {
-        // TODO：这里title不显示？？
-        title: {
-            text: '百分比堆叠柱状图',
-        },
         legend: {
             show: true,
             bottom: 10,
@@ -119,17 +115,17 @@ export const PercentStackedColumnChart = () => {
     }, [])
 
     const initChart = () => {
-        const chartDom = document.getElementById('GroupedColumnChart');
+        const chartDom = document.getElementById('PercentStackedColumnChart');
         currentChartInstance.current = echarts.init(chartDom);
         configOption && currentChartInstance.current && currentChartInstance.current.setOption(configOption);
     }
 
     const chartDom: React.FC = () => {
-        return <div className='flex w-full h-full pb-5 bg-#FFFFFF'>
-            {/* <div className='header h-5 bg-#CCCCCC'>分组柱状图</div> */}
+        return <div className='flex flex-col w-full h-full pb-5 bg-#FFFFFF'>
+            <div className='header h-5 w-full'>百分比堆叠柱状图</div>
             <div
-                id='GroupedColumnChart'
-                className='w-full h-calc[100%-40px]'
+                id='PercentStackedColumnChart'
+                className='w-full h-400px'
             />
         </div>
     }

@@ -11,10 +11,6 @@ echarts.use([GridComponent, BarChart, CanvasRenderer, LegendComponent]);
 export const GroupedColumnChart = () => {
     const currentChartInstance = useRef<echarts.EChartsType>(null);
     let configOption = {
-        // TODO：这里title不显示？？
-        title: {
-            text: '分组柱状图',
-        },
         legend: {
             show: true,
             bottom: 10,
@@ -38,7 +34,7 @@ export const GroupedColumnChart = () => {
                 data: [40, 20, 25, 55, 33, 89, 97],
                 type: 'bar',
                 barGap: 0,
-                barMinWidth: 40,
+                barMinWidth: 20,
                 barMaxWidth: 40,
                 itemStyle: {
                     normal: {
@@ -51,7 +47,7 @@ export const GroupedColumnChart = () => {
                 data: [66, 93, 33, 59, 26, 78, 47],
                 type: 'bar',
                 barGap: 0,
-                barMinWidth: 40,
+                barMinWidth: 20,
                 barMaxWidth: 40,
                 itemStyle: {
                     normal: {
@@ -73,11 +69,11 @@ export const GroupedColumnChart = () => {
     }
 
     const chartDom: React.FC = () => {
-        return <div className='flex w-full h-full pb-5 bg-#FFFFFF'>
-            {/* <div className='header h-5 bg-#CCCCCC'>分组柱状图</div> */}
+        return <div className='flex flex-col w-full h-full pb-5 bg-#FFFFFF'>
+            <div className='header h-5 w-full'>分组柱状图</div>
             <div
                 id='GroupedColumnChart'
-                className='w-full h-calc[100%-40px]'
+                className='w-full h-400px'
             />
         </div>
     }
