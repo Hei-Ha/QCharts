@@ -13,6 +13,8 @@ import { GroupedColumnChart } from '@src/views/chartsExample/columnCharts/compon
 import { StackedColumnChart } from '@src/views/chartsExample/columnCharts/components/StackedColumnChart';
 import { PercentStackedColumnChart } from '@src/views/chartsExample/columnCharts/components/PercentStackedColumnChart';
 import { DualAxisColumnAndLineChart } from '@src/views/chartsExample/columnCharts/components/DualAxisColumnAndLineChart';
+import { DualAxisAndDualColumnChart } from '@src/views/chartsExample/columnCharts/components/DualAxisAndDualColumnChart';
+
 
 
 
@@ -24,6 +26,8 @@ export const subRoute = () => {
         <Route path='columnCharts/stacked' element={<StackedColumnChart />} />
         <Route path='columnCharts/percentStacked' element={<PercentStackedColumnChart />} />
         <Route path='columnCharts/dualAxisColumnAndLine' element={<DualAxisColumnAndLineChart />} />
+        <Route path='columnCharts/dualAxisAndDualColumn' element={<DualAxisAndDualColumnChart />} />
+
 
         <Route path='lineCharts' element={<LineCharts/>}/>
     </Route>

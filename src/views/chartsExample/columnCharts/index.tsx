@@ -29,5 +29,10 @@ export const ColumnCharts = () => {
                 双轴图-柱状图+线
             </Button>
         </Link>
+        <Link to='/charts/columnCharts/dualAxisAndDualColumn'>
+            <Button type='primary'>
+                双轴图-双柱图
+            </Button>
+        </Link>
     </div>
 }
