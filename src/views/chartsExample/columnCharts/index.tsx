@@ -24,5 +24,10 @@ export const ColumnCharts = () => {
                 百分比堆叠柱状图
             </Button>
         </Link>
+        <Link to='/charts/columnCharts/dualAxisColumnAndLine'>
+            <Button type='primary'>
+                双轴图-柱状图+线
+            </Button>
+        </Link>
     </div>
 }
