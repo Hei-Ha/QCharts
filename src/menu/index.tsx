@@ -13,7 +13,7 @@ export const SlidMenu = () => {
 
     return <div className='h-full flex flex-col'>
         {/*${theme === 'dark' ? 'bg-#232324' : 'bg-#FFFFFF'}*/}
-        <div className={` text-#1D2129 font-medium text-sm border-b border-solid border-#E4E8EF h-12 flex items-center pl-5`}>
+        <div className={`text-#1D2129 font-medium text-sm border-b border-solid border-#E4E8EF h-12 flex items-center pl-5`}>
             <img className='w-4 h-4' src="https://img.qcraftai.com/qchart/chartListIcon.png" alt="chartListIcon"/>
             <span className='ml-2'>轻舟图表</span>
         </div>
