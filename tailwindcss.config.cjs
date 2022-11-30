@@ -11,6 +11,7 @@ module.exports = {
                 '500px': '500px',
                 '400px': '400px',
                 '300px': '300px',
+                '270px': '270px',
             },
             minHeight: {
                 '800px': '800px',
@@ -26,7 +27,9 @@ module.exports = {
             '#D9DBE1': '#D9DBE1',
             '#E4E8EF': '#E4E8EF',
             '#232324': '#232324',
-            '#E5E8EF': '#E5E8EF'
+            '#E5E8EF': '#E5E8EF',
+            '#C3C7CA': '#C3C7CA',
+            '#000000': '#000000',
         }
     },
     plugins: []
