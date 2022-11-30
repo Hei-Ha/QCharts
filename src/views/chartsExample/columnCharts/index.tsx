@@ -18,39 +18,43 @@ export const ColumnCharts = () => {
                     path='/charts/columnCharts/base'
                 />
             </Col>
-            <Col span={7} offset={1} className='bg-#CCCCCC'>
-                <Link to='/charts/columnCharts/grouped'>
-                    <Button type='primary'>
-                        分组柱状图
-                    </Button>
-                </Link>
+            <Col span={7} offset={1} className='bg-#FFFFFF h-full'>
+                <ChartCard
+                    title='分组柱状图'
+                    imgUrl='https://img.qcraftai.com/qchart/groupedColumnChart.png'
+                    path='/charts/columnCharts/grouped'
+                />
             </Col>
-            <Col span={7} offset={1} className='bg-#CCCCCC '>
-                <Link to='/charts/columnCharts/stacked'>
-                    <Button type='primary'>
-                        堆叠柱状图
-                    </Button>
-                </Link>
+            <Col span={7} offset={1} className='bg-#FFFFFF h-full'>
+                <ChartCard
+                    title={'堆叠柱状图'}
+                    imgUrl='https://img.qcraftai.com/qchart/stackedColumnChart.png'
+                    path='/charts/columnCharts/stacked'
+                />
             </Col>
         </Row>
         <Row className='mb-4'>
-            <Col span={7} className='bg-#CCCCCC'>
-                <Link to='/charts/columnCharts/percentStacked'>
-                    <Button type='primary'>
-                        百分比堆叠柱状图
-                    </Button>
-                </Link>
+            <Col span={7} className='bg-#FFFFFF h-full'>
+                <ChartCard
+                    title='百分比堆叠柱状图'
+                    imgUrl='https://img.qcraftai.com/qchart/percentStackedColumnChart.png'
+                    path='/charts/columnCharts/percentStacked'
+                />
+            </Col>
+            <Col span={7} offset={1} className='bg-#FFFFFF h-full'>
+                <ChartCard
+                    title='双轴图-柱状图+线'
+                    imgUrl='https://img.qcraftai.com/qchart/dualAxisColumnAndLineChart.png'
+                    path='/charts/columnCharts/dualAxisColumnAndLine'
+                />
+            </Col>
+            <Col span={7} offset={1} className='bg-#FFFFFF h-full'>
+                <ChartCard
+                    title='双轴图-双柱图'
+                    imgUrl='https://img.qcraftai.com/qchart/dualAxisAndDualColumnChart.png'
+                    path='/charts/columnCharts/dualAxisAndDualColumn'
+                />
             </Col>
         </Row>
-        <Link to='/charts/columnCharts/dualAxisColumnAndLine'>
-            <Button type='primary'>
-                双轴图-柱状图+线
-            </Button>
-        </Link>
-        <Link to='/charts/columnCharts/dualAxisAndDualColumn'>
-            <Button type='primary'>
-                双轴图-双柱图
-            </Button>
-        </Link>
     </div>
 }
