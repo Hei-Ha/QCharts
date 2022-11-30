@@ -1,7 +1,6 @@
 import React from 'react';
 import { ChartCard } from '@src/components/ChartCard';
-import {Button, Grid} from '@arco-design/web-react';
-import {Link} from "react-router-dom";
+import {Grid} from '@arco-design/web-react';
 
 const Row = Grid.Row;
 const Col = Grid.Col;
@@ -33,7 +32,7 @@ export const ColumnCharts = () => {
                 />
             </Col>
         </Row>
-        <Row className='mb-4'>
+        <Row className='mb-4 h-270px'>
             <Col span={7} className='bg-#FFFFFF h-full'>
                 <ChartCard
                     title='百分比堆叠柱状图'
