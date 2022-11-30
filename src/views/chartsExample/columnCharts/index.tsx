@@ -55,5 +55,14 @@ export const ColumnCharts = () => {
                 />
             </Col>
         </Row>
+        <Row className='mb-4 h-270px'>
+            <Col span={7} className='bg-#FFFFFF h-full'>
+                <ChartCard
+                    title='瀑布图'
+                    imgUrl='https://img.qcraftai.com/qchart/waterfallChart.png'
+                    path='/charts/columnCharts/waterfall'
+                />
+            </Col>
+        </Row>
     </div>
 }
