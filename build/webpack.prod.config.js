@@ -7,7 +7,7 @@ const rootPath = path.resolve();
 export default merge(commonConfig, {
     output: {
         filename: "[name].[chunkhash].js",
-        path: path.resolve(rootPath, 'dist'),
+        path: path.resolve(rootPath, 'docs'),
         clean: true,
         pathinfo: false, // 输出结果不带路径信息，以提高性能
     },
