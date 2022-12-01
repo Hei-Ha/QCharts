@@ -1,10 +1,13 @@
 import React, {useEffect, useRef, useState} from "react";
 import AceEditor from 'react-ace';
-import {Tabs, Button} from "@arco-design/web-react";
+import {Tabs, Button, Card} from "@arco-design/web-react";
 import documentLayoutStyle from './index.module.less';
-import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/src-noconflict/theme-terminal";
+import "ace-builds/src-noconflict/theme-textmate";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/ext-language_tools";
+import {useSelector} from "react-redux";
+import {getUIModeSlice} from "@src/store/reducer/UIMode";
 
 
 interface PropsType {
@@ -15,6 +18,7 @@ interface PropsType {
 }
 
 export const DocumentLayout = (props: PropsType) => {
+    const theme = useSelector(getUIModeSlice);
     const leftWrap = useRef<HTMLDivElement>(null);
     const dragAxis = useRef<HTMLDivElement>(null);
     const rightWrap = useRef<HTMLDivElement>(null);
@@ -61,7 +65,7 @@ export const DocumentLayout = (props: PropsType) => {
     const editor = (code: string) => {
         return <AceEditor
             mode="javascript"
-            theme="github"
+            theme={theme === 'dark' ? 'terminal' : 'textmate'}
             name={String(editorId)}
             editorProps={{$blockScrolling: true}}
             style={{
@@ -100,24 +104,22 @@ export const DocumentLayout = (props: PropsType) => {
                 <Tabs.TabPane
                     title='代码编辑'
                     key='codeEdit'
-                    className='bg-#FFFFFF'
                 >
                     {editor(currentOption)}
                 </Tabs.TabPane>
                 <Tabs.TabPane
                     title='完整代码'
                     key='fullCode'
-                    className='bg-#FFFFFF'
                 >
                     {editor(currentOption)}
                 </Tabs.TabPane>
             </Tabs>
         </div>
-        <div className='dragAxis w-1 h-full bg-#F0F1F8 cursor-col-resize mr-4'/>
-        <div className='rightWrap bg-#FFFFFF flex flex-auto flex-col h-calc[100vh-50px-40px] select-none p-5'>
-            <div className='p-5 h-full w-full border border-solid border-#E5E8EF overflow-scroll'>
+        <div className='dragAxis w-1 h-full cursor-col-resize mr-4'/>
+        <Card className='rightWrap flex flex-auto flex-col h-calc[100vh-50px-40px] select-none p-5'>
+            <div className='p-5 h-full w-full border border-solid border-current overflow-scroll'>
                 <props.chartDom />
             </div>
-        </div>
+        </Card>
     </div>
 }

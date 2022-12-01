@@ -16,11 +16,17 @@ export const TopBar = () => {
         </div>
         <div className='mr-10'>
             {UIMode === 'light' ?
-                <div className='w-6 h-6' onClick={() => { dispatch(switchUiToDark()) }}>
+                <div className='w-6 h-6' onClick={() => {
+                    dispatch(switchUiToDark());
+                    document.body.setAttribute('arco-theme', 'dark');
+                }}>
                     <img src="https://img.qcraftai.com/qdata/images/qdata/day.png" alt="day"/>
                 </div>
                 :
-                <div className='w-6 h-6' onClick={() => { dispatch(switchUIToLight()) }}>
+                <div className='w-6 h-6' onClick={() => {
+                    dispatch(switchUIToLight());
+                    document.body.removeAttribute('arco-theme');
+                }}>
                     <img src="https://img.qcraftai.com/qdata/images/qdata/night.png" alt="night"/>
                 </div>
             }

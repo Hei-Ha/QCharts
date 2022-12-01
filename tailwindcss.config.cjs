@@ -30,6 +30,7 @@ module.exports = {
             '#E5E8EF': '#E5E8EF',
             '#C3C7CA': '#C3C7CA',
             '#000000': '#000000',
+            '#17171a': '#17171a'
         }
     },
     plugins: []
