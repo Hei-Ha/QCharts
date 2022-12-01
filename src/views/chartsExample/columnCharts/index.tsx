@@ -63,6 +63,20 @@ export const ColumnCharts = () => {
                     path='/charts/columnCharts/waterfall'
                 />
             </Col>
+            <Col span={7} offset={1} className='bg-#FFFFFF h-full'>
+                <ChartCard
+                    title='瀑布图'
+                    imgUrl='https://img.qcraftai.com/qchart/combinationChart.png'
+                    path='/charts/columnCharts/combination'
+                />
+            </Col>
+            <Col span={7} offset={1} className='bg-#FFFFFF h-full'>
+                <ChartCard
+                    title='直方图（还没搞好）'
+                    imgUrl='https://img.qcraftai.com/qchart/histogramChart.png'
+                    path='/charts/columnCharts/histogram'
+                />
+            </Col>
         </Row>
     </div>
 }

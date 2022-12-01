@@ -15,9 +15,8 @@ import { PercentStackedColumnChart } from '@src/views/chartsExample/columnCharts
 import { DualAxisColumnAndLineChart } from '@src/views/chartsExample/columnCharts/components/DualAxisColumnAndLineChart';
 import { DualAxisAndDualColumnChart } from '@src/views/chartsExample/columnCharts/components/DualAxisAndDualColumnChart';
 import { WaterfallChart } from '@src/views/chartsExample/columnCharts/components/WaterfallChart';
-
-
-
+import { CombinationChart } from '@src/views/chartsExample/columnCharts/components/CombinationChart';
+import { HistogramChart } from '@src/views/chartsExample/columnCharts/components/HistogramChart';
 
 
 export const subRoute = () => {
@@ -28,7 +27,12 @@ export const subRoute = () => {
         <Route path='columnCharts/stacked' element={<StackedColumnChart />} />
         <Route path='columnCharts/percentStacked' element={<PercentStackedColumnChart />} />
         <Route path='columnCharts/dualAxisColumnAndLine' element={<DualAxisColumnAndLineChart />} />
+        <Route path='columnCharts/dualAxisAndDualColumn' element={<DualAxisAndDualColumnChart />} />
         <Route path='columnCharts/waterfall' element={<WaterfallChart />} />
+        <Route path='columnCharts/combination' element={<CombinationChart />} />
+        <Route path='columnCharts/histogram' element={<HistogramChart />} />
+
+
 
         <Route path='lineCharts' element={<LineCharts/>}/>
     </Route>
