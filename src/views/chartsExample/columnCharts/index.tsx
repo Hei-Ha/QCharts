@@ -65,7 +65,7 @@ export const ColumnCharts = () => {
             </Col>
             <Col span={7} offset={1} className='bg-#FFFFFF h-full'>
                 <ChartCard
-                    title='瀑布图'
+                    title='组合图'
                     imgUrl='https://img.qcraftai.com/qchart/combinationChart.png'
                     path='/charts/columnCharts/combination'
                 />
