@@ -9,7 +9,7 @@ export const ColumnCharts = () => {
     return <div className='flex flex-col py-5 px-10'>
         {/*<hr className='mb-5 w-full text-#C3C7CA' />*/}
         <h2 className='text-base text-#000000 mb-5'>柱状图</h2>
-        <Row className='mb-4 h-270px'>
+        <Row className='mb-4 min-h-270px'>
             <Col span={7} className='bg-#FFFFFF h-full'>
                 <ChartCard
                     title='基础柱状图'
@@ -32,7 +32,7 @@ export const ColumnCharts = () => {
                 />
             </Col>
         </Row>
-        <Row className='mb-4 h-270px'>
+        <Row className='mb-4 min-h-270px'>
             <Col span={7} className='bg-#FFFFFF h-full'>
                 <ChartCard
                     title='百分比堆叠柱状图'
@@ -55,7 +55,7 @@ export const ColumnCharts = () => {
                 />
             </Col>
         </Row>
-        <Row className='mb-4 h-270px'>
+        <Row className='mb-4 min-h-270px'>
             <Col span={7} className='bg-#FFFFFF h-full'>
                 <ChartCard
                     title='瀑布图'
