@@ -15,6 +15,7 @@ interface PropsType {
     axisChange: Function;
     configOption: JSON;
     onOptionChange: Function;
+    title?: string;
 }
 
 export const DocumentLayout = (props: PropsType) => {
@@ -117,9 +118,13 @@ export const DocumentLayout = (props: PropsType) => {
         </div>
         <div className='dragAxis w-1 h-full cursor-col-resize mr-4'/>
         <Card className='rightWrap flex flex-auto flex-col h-calc[100vh-50px-40px] select-none p-5'>
-            <div className='p-5 h-full w-full border border-solid border-current overflow-scroll'>
+            <Card
+                title={props.title}
+                className='p-5 w-full border border-solid border-current overflow-scroll'
+                bodyStyle={{height: '400px'}}
+            >
                 <props.chartDom />
-            </div>
+            </Card>
         </Card>
     </div>
 }
