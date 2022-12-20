@@ -71,7 +71,7 @@ export const BaseLineChart = () => {
     }
 
     return <DocumentLayout
-        title={'折线图'}
+        title={'基础折线图'}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
         configOption={configOption as unknown as JSON}

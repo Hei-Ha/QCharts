@@ -96,7 +96,7 @@ export const BiaxialLineChart = () => {
     }
 
     return <DocumentLayout
-        title={'折线图'}
+        title={'双轴折线'}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
         configOption={configOption as unknown as JSON}

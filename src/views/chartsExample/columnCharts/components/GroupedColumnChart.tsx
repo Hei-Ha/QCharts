@@ -84,6 +84,7 @@ export const GroupedColumnChart = () => {
     }
 
     return <DocumentLayout
+        title={'分组柱状图'}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
         configOption={configOption as unknown as JSON}

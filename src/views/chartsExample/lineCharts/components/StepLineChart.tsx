@@ -72,7 +72,7 @@ export const StepLineChart = () => {
     }
 
     return <DocumentLayout
-        title={'折线图'}
+        title={'阶梯折线'}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
         configOption={configOption as unknown as JSON}

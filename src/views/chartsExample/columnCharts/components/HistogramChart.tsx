@@ -69,6 +69,7 @@ export const HistogramChart = () => {
     }
 
     return <DocumentLayout
+        title={'直方图'}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
         configOption={configOption as unknown as JSON}

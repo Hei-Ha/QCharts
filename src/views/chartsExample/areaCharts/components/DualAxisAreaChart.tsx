@@ -2,13 +2,16 @@ import React, { useEffect, useRef } from 'react';
 import { DocumentLayout } from '@src/components/documentLayout';
 import * as echarts from 'echarts/core';
 import { GridComponent, LegendComponent } from 'echarts/components';
-import { BarChart, LineChart } from 'echarts/charts';
+import { LineChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import { EChartsCoreOption } from '@src/type/type';
+import { useSelector } from "react-redux";
+import { getUIModeSlice } from "@src/store/reducer/UIMode";
 
-echarts.use([GridComponent, BarChart, LineChart, CanvasRenderer, LegendComponent]);
+echarts.use([GridComponent, LineChart, CanvasRenderer, LegendComponent]);
 
-export const DualAxisColumnAndLineChart = () => {
+export const DualAxisAreaChart = () => {
+    const theme = useSelector(getUIModeSlice);
     const currentChartInstance = useRef<echarts.EChartsType>(null);
     let configOption = {
         legend: {
@@ -17,15 +20,11 @@ export const DualAxisColumnAndLineChart = () => {
             icon: 'circle',
             data: ['A类别', 'B类别']
         },
-        xAxis: [
-            {
-                type: 'category',
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                axisPointer: {
-                    type: 'shadow'
-                }
-            }
-        ],
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
         yAxis: [
             {
                 type: 'value',
@@ -33,7 +32,7 @@ export const DualAxisColumnAndLineChart = () => {
                 min: 0,
                 max: 100,
                 axisLabel: {
-                    formatter: '{value} %'
+                    formatter: '{value}%'
                 }
             },
             {
@@ -48,14 +47,15 @@ export const DualAxisColumnAndLineChart = () => {
         ],
         series: [
             {
+                data: [24, 28, 38, 12, 20, 40, 30],
+                type: 'line',
                 name: 'A类别',
-                data: [70, 42, 55, 23, 38, 79, 90],
-                type: 'bar',
-                barMinWidth: 40,
-                barMaxWidth: 40,
                 itemStyle: {
                     normal: {
-                        color: '#468DFF'
+                        color: '#468DFF',
+                        areaStyle: {
+                            color: 'rgba(70,141,255,0.2)'
+                        }
                     }
                 }
             },
@@ -63,10 +63,14 @@ export const DualAxisColumnAndLineChart = () => {
                 name: 'B类别',
                 type: 'line',
                 yAxisIndex: 1,
-                data: [22, 465, 200, 688, 966, 400, 189],
+                data: [500, 550, 600, 400, 500, 450, 600],
                 itemStyle: {
                     normal: {
-                        color: '#86DF6C'
+                        color: '#86DF6C',
+                        areaStyle: {
+                            color: 'rgba(134,223,108,0.2)',
+                            origin: 'auto',
+                        }
                     }
                 }
             },
@@ -77,20 +81,21 @@ export const DualAxisColumnAndLineChart = () => {
         initChart();
     }, [])
 
+    useEffect(() => {
+        initChart();
+    }, [theme])
+
     const initChart = () => {
-        const chartDom = document.getElementById('DualAxisColumnAndLineChart');
-        currentChartInstance.current = echarts.init(chartDom);
+        const chartDom = document.getElementById('BaseColumnChart');
+        currentChartInstance.current = echarts.init(chartDom, theme);
         configOption && currentChartInstance.current && currentChartInstance.current.setOption(configOption);
     }
 
     const chartDom: React.FC = () => {
-        return <div className='flex flex-col w-full h-full pb-5 bg-#FFFFFF'>
-            <div className='header h-5 w-full'>双轴图-柱状图+线</div>
-            <div
-                id='DualAxisColumnAndLineChart'
-                className='w-full h-400px'
-            />
-        </div>
+        return <div
+            id='BaseColumnChart'
+            className='w-full h-full'
+        />
     }
 
 
@@ -99,7 +104,7 @@ export const DualAxisColumnAndLineChart = () => {
     }
 
     return <DocumentLayout
-        title={'双轴图-柱状图+线'}
+        title={'双轴面积图'}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
         configOption={configOption as unknown as JSON}

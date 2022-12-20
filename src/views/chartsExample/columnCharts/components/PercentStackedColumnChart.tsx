@@ -136,6 +136,7 @@ export const PercentStackedColumnChart = () => {
     }
 
     return <DocumentLayout
+        title={'百分比堆叠柱状图'}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
         configOption={configOption as unknown as JSON}

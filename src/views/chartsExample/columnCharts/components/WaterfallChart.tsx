@@ -107,6 +107,7 @@ export const WaterfallChart = () => {
     }
 
     return <DocumentLayout
+        title={'瀑布图'}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
         configOption={configOption as unknown as JSON}

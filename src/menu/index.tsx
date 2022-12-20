@@ -40,6 +40,18 @@ export const SlidMenu = () => {
                     折线图
                 </MenuItem>
             </Link>
+
+            <Link to='/charts/areaCharts'>
+                <MenuItem key='areaCharts'>
+                    面积图
+                </MenuItem>
+            </Link>
+
+            <Link to='/charts/scatterCharts'>
+                <MenuItem key='scatterCharts'>
+                    散点图
+                </MenuItem>
+            </Link>
         </Menu>
     </div>
 }

@@ -141,6 +141,7 @@ export const CombinationChart = () => {
     }
 
     return <DocumentLayout
+        title={'组合图'}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
         configOption={configOption as unknown as JSON}

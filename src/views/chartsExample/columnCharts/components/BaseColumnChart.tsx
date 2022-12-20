@@ -72,7 +72,7 @@ export const BaseColumnChart = () => {
     }
 
     return <DocumentLayout
-        title={'柱状图'}
+        title={'基础柱状图'}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
         configOption={configOption as unknown as JSON}

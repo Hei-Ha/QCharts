@@ -128,6 +128,7 @@ export const StackedColumnChart = () => {
     }
 
     return <DocumentLayout
+        title={'堆叠柱状图'}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
         configOption={configOption as unknown as JSON}

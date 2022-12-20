@@ -21,7 +21,14 @@ import { DoubleLineChart } from '@src/views/chartsExample/lineCharts/components/
 import { StepLineChart } from '@src/views/chartsExample/lineCharts/components/StepLineChart';
 import { BiaxialLineChart } from '@src/views/chartsExample/lineCharts/components/BiaxialLineChart';
 
+import { AreaCharts } from "@src/views/chartsExample/AreaCharts";
+import { BaseAreaChart } from '@src/views/chartsExample/areaCharts/components/BaseAreaChart';
+import { StackedAreaChart } from '@src/views/chartsExample/areaCharts/components/StackedAreaChart';
+import { PercentageAreaChart } from '@src/views/chartsExample/areaCharts/components/PercentageAreaChart';
+import { DualAxisAreaChart } from '@src/views/chartsExample/areaCharts/components/DualAxisAreaChart';
 
+import { ScatterCharts } from "@src/views/chartsExample/ScatterCharts";
+import { BaseScatterChart } from "@src/views/chartsExample/scatterCharts/components/BaseScatterChart";
 
 
 export const subRoute = () => {
@@ -42,5 +49,14 @@ export const subRoute = () => {
         <Route path='lineCharts/double' element={<DoubleLineChart />} />
         <Route path='lineCharts/step' element={<StepLineChart />} />
         <Route path='lineCharts/biaxial' element={<BiaxialLineChart />} />
+
+        <Route path='areaCharts' element={<AreaCharts />} />
+        <Route path='areaCharts/base' element={<BaseAreaChart />} />
+        <Route path='areaCharts/stacked' element={<StackedAreaChart />} />
+        <Route path='areaCharts/percentage' element={<PercentageAreaChart />} />
+        <Route path='areaCharts/dualAxis' element={<DualAxisAreaChart />} />
+
+        <Route path='scatterCharts' element={<ScatterCharts />} />
+        <Route path='scatterCharts/base' element={<BaseScatterChart />} />
     </Route>
 }

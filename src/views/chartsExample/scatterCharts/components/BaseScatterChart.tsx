@@ -2,15 +2,15 @@ import React, { useEffect, useRef } from 'react';
 import { DocumentLayout } from '@src/components/documentLayout';
 import * as echarts from 'echarts/core';
 import { GridComponent, LegendComponent } from 'echarts/components';
-import { LineChart } from 'echarts/charts';
+import { ScatterChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import { EChartsCoreOption } from '@src/type/type';
 import { useSelector } from "react-redux";
 import { getUIModeSlice } from "@src/store/reducer/UIMode";
 
-echarts.use([GridComponent, LineChart, CanvasRenderer, LegendComponent]);
+echarts.use([GridComponent, ScatterChart, CanvasRenderer, LegendComponent]);
 
-export const DoubleLineChart = () => {
+export const BaseScatterChart = () => {
     const theme = useSelector(getUIModeSlice);
     const currentChartInstance = useRef<echarts.EChartsType>(null);
     let configOption = {
@@ -20,33 +20,61 @@ export const DoubleLineChart = () => {
             icon: 'circle',
             data: ['A类别', 'B类别']
         },
-        xAxis: {
-            type: 'category',
-            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-        },
-        yAxis: {
-            type: 'value'
-        },
+        xAxis: {},
+        yAxis: {},
         series: [
             {
-                data: [150, 230, 224, 218, 135, 147, 260],
-                type: 'line',
-                name: 'A类别',
+                symbolSize: 10,
                 itemStyle: {
                     normal: {
                         color: '#468DFF',
                     }
-                }
+                },
+                name: 'A类别',
+                data: [
+                    [10.0, 8.04],
+                    [8.07, 6.95],
+                    [13.0, 7.58],
+                    [9.05, 8.81],
+                    [11.0, 8.33],
+                    [14.0, 7.66],
+                    [13.4, 6.81],
+                    [10.0, 6.33],
+                    [14.0, 8.96],
+                    [12.5, 6.82],
+                    [9.15, 7.2],
+                    [11.5, 7.2],
+                    [3.03, 4.23],
+                    [12.2, 7.83],
+                    [2.02, 4.47],
+                    [1.05, 3.33],
+                    [4.05, 4.96],
+                    [6.03, 7.24],
+                    [12.0, 6.26],
+                    [12.0, 8.84],
+                    [7.08, 5.82],
+                    [5.02, 5.68]
+                ],
+                type: 'scatter',
             },
             {
-                data: [224, 289, 250, 290, 300, 350, 280],
-                type: 'line',
-                name: 'B类别',
+                symbolSize: 10,
                 itemStyle: {
                     normal: {
-                        color: '#8DDA76',
+                        color: '#86DF6C',
                     }
-                }
+                },
+                name: 'B类别',
+                data: [
+                    [8.04, 10.0],
+                    [6.95, 8.07],
+                    [7.58, 13.0],
+                    [8.81, 9.05],
+                    [8.33, 11.0],
+                    [7.66, 14.0],
+                    [5.02, 6.68]
+                ],
+                type: 'scatter',
             }
         ]
     };
@@ -78,7 +106,7 @@ export const DoubleLineChart = () => {
     }
 
     return <DocumentLayout
-        title={'双折线'}
+        title={'散点图'}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
         configOption={configOption as unknown as JSON}

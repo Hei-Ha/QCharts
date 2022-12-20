@@ -106,6 +106,7 @@ export const DualAxisAndDualColumnChart = () => {
     }
 
     return <DocumentLayout
+        title={'双轴图-双柱图'}
         chartDom={chartDom}
         axisChange={() => { currentChartInstance.current.resize() }}
         configOption={configOption as unknown as JSON}
