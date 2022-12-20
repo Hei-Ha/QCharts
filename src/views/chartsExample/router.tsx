@@ -5,9 +5,6 @@ import {
 
 import { ColumnCharts } from './columnCharts';
 import { ChartsExample } from "@src/views/chartsExample/index";
-import {LineCharts} from "@src/views/chartsExample/lineCharts/LineCharts";
-
-
 import { BaseColumnChart } from '@src/views/chartsExample/columnCharts/components/BaseColumnChart';
 import { GroupedColumnChart } from '@src/views/chartsExample/columnCharts/components/GroupedColumnChart';
 import { StackedColumnChart } from '@src/views/chartsExample/columnCharts/components/StackedColumnChart';
@@ -17,6 +14,14 @@ import { DualAxisAndDualColumnChart } from '@src/views/chartsExample/columnChart
 import { WaterfallChart } from '@src/views/chartsExample/columnCharts/components/WaterfallChart';
 import { CombinationChart } from '@src/views/chartsExample/columnCharts/components/CombinationChart';
 import { HistogramChart } from '@src/views/chartsExample/columnCharts/components/HistogramChart';
+
+import { LineCharts } from "@src/views/chartsExample/lineCharts";
+import { BaseLineChart } from '@src/views/chartsExample/lineCharts/components/BaseLineChart';
+import { DoubleLineChart } from '@src/views/chartsExample/lineCharts/components/DoubleLineChart';
+import { StepLineChart } from '@src/views/chartsExample/lineCharts/components/StepLineChart';
+import { BiaxialLineChart } from '@src/views/chartsExample/lineCharts/components/BiaxialLineChart';
+
+
 
 
 export const subRoute = () => {
@@ -32,8 +37,10 @@ export const subRoute = () => {
         <Route path='columnCharts/combination' element={<CombinationChart />} />
         <Route path='columnCharts/histogram' element={<HistogramChart />} />
 
-
-
-        <Route path='lineCharts' element={<LineCharts/>}/>
+        <Route path='lineCharts' element={<LineCharts />} />
+        <Route path='lineCharts/base' element={<BaseLineChart />} />
+        <Route path='lineCharts/double' element={<DoubleLineChart />} />
+        <Route path='lineCharts/step' element={<StepLineChart />} />
+        <Route path='lineCharts/biaxial' element={<BiaxialLineChart />} />
     </Route>
 }
