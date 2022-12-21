@@ -108,12 +108,12 @@ export const DocumentLayout = (props: PropsType) => {
                 >
                     {editor(currentOption)}
                 </Tabs.TabPane>
-                <Tabs.TabPane
-                    title='完整代码'
-                    key='fullCode'
-                >
-                    {editor(currentOption)}
-                </Tabs.TabPane>
+                {/*<Tabs.TabPane*/}
+                {/*    title='完整代码'*/}
+                {/*    key='fullCode'*/}
+                {/*>*/}
+                {/*    {editor(currentOption)}*/}
+                {/*</Tabs.TabPane>*/}
             </Tabs>
         </div>
         <div className='dragAxis w-1 h-full cursor-col-resize mr-4'/>

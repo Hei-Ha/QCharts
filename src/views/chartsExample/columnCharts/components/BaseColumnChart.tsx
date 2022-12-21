@@ -1,13 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { DocumentLayout } from '@src/components/documentLayout';
-import * as echarts from 'echarts/core';
-import { GridComponent, LegendComponent } from 'echarts/components';
-import { BarChart } from 'echarts/charts';
-import { CanvasRenderer } from 'echarts/renderers';
 import { EChartsCoreOption } from '@src/type/type';
 import {useSelector} from "react-redux";
 import {getUIModeSlice} from "@src/store/reducer/UIMode";
 
+import * as echarts from 'echarts/core';
+import { GridComponent, LegendComponent } from 'echarts/components';
+import { BarChart } from 'echarts/charts';
+import { CanvasRenderer } from 'echarts/renderers';
 echarts.use([GridComponent, BarChart, CanvasRenderer, LegendComponent]);
 
 export const BaseColumnChart = () => {
@@ -45,9 +45,6 @@ export const BaseColumnChart = () => {
         ]
     };
 
-    useEffect(() => {
-        initChart();
-    }, [])
 
     useEffect(() => {
         initChart();
