@@ -5,10 +5,13 @@ import { GridComponent, LegendComponent } from 'echarts/components';
 import { BarChart, LineChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import { EChartsCoreOption } from '@src/type/type';
+import {useSelector} from "react-redux";
+import {getUIModeSlice} from "@src/store/reducer/UIMode";
 
 echarts.use([GridComponent, BarChart, LineChart, CanvasRenderer, LegendComponent]);
 
 export const DualAxisColumnAndLineChart = () => {
+    const theme = useSelector(getUIModeSlice);
     const currentChartInstance = useRef<echarts.EChartsType>(null);
     let configOption = {
         legend: {
@@ -75,22 +78,19 @@ export const DualAxisColumnAndLineChart = () => {
 
     useEffect(() => {
         initChart();
-    }, [])
+    }, [theme])
 
     const initChart = () => {
         const chartDom = document.getElementById('DualAxisColumnAndLineChart');
-        currentChartInstance.current = echarts.init(chartDom);
+        currentChartInstance.current = echarts.init(chartDom, theme);
         configOption && currentChartInstance.current && currentChartInstance.current.setOption(configOption);
     }
 
     const chartDom: React.FC = () => {
-        return <div className='flex flex-col w-full h-full pb-5 bg-#FFFFFF'>
-            <div className='header h-5 w-full'>双轴图-柱状图+线</div>
-            <div
-                id='DualAxisColumnAndLineChart'
-                className='w-full h-400px'
-            />
-        </div>
+        return  <div
+            id='DualAxisColumnAndLineChart'
+            className='w-full h-full'
+        />
     }
 
 

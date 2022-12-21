@@ -79,10 +79,6 @@ export const DualAxisAreaChart = () => {
 
     useEffect(() => {
         initChart();
-    }, [])
-
-    useEffect(() => {
-        initChart();
     }, [theme])
 
     const initChart = () => {

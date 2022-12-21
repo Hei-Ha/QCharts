@@ -53,10 +53,6 @@ export const DoubleLineChart = () => {
 
     useEffect(() => {
         initChart();
-    }, [])
-
-    useEffect(() => {
-        initChart();
     }, [theme])
 
     const initChart = () => {

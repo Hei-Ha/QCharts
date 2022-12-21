@@ -5,10 +5,13 @@ import { GridComponent, LegendComponent } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import { EChartsCoreOption } from '@src/type/type';
+import {useSelector} from "react-redux";
+import {getUIModeSlice} from "@src/store/reducer/UIMode";
 
 echarts.use([GridComponent, BarChart, CanvasRenderer, LegendComponent]);
 
 export const PercentStackedColumnChart = () => {
+    const theme = useSelector(getUIModeSlice);
     const currentChartInstance = useRef<echarts.EChartsType>(null);
     // let data = {
     //     arrA: [20, 40, 80, 140, 30, 60, 80],
@@ -112,22 +115,19 @@ export const PercentStackedColumnChart = () => {
 
     useEffect(() => {
         initChart();
-    }, [])
+    }, [theme])
 
     const initChart = () => {
         const chartDom = document.getElementById('PercentStackedColumnChart');
-        currentChartInstance.current = echarts.init(chartDom);
+        currentChartInstance.current = echarts.init(chartDom, theme);
         configOption && currentChartInstance.current && currentChartInstance.current.setOption(configOption);
     }
 
     const chartDom: React.FC = () => {
-        return <div className='flex flex-col w-full h-full pb-5 bg-#FFFFFF'>
-            <div className='header h-5 w-full'>百分比堆叠柱状图</div>
-            <div
-                id='PercentStackedColumnChart'
-                className='w-full h-400px'
-            />
-        </div>
+        return <div
+            id='PercentStackedColumnChart'
+            className='w-full h-full'
+        />
     }
 
 

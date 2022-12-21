@@ -45,9 +45,6 @@ export const StepLineChart = () => {
         ]
     };
 
-    useEffect(() => {
-        initChart();
-    }, [])
 
     useEffect(() => {
         initChart();

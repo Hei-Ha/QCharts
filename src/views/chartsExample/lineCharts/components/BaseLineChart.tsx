@@ -46,10 +46,6 @@ export const BaseLineChart = () => {
 
     useEffect(() => {
         initChart();
-    }, [])
-
-    useEffect(() => {
-        initChart();
     }, [theme])
 
     const initChart = () => {

@@ -76,10 +76,6 @@ export const StackedAreaChart = () => {
 
     useEffect(() => {
         initChart();
-    }, [])
-
-    useEffect(() => {
-        initChart();
     }, [theme])
 
     const initChart = () => {

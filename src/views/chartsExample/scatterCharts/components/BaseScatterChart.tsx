@@ -79,9 +79,6 @@ export const BaseScatterChart = () => {
         ]
     };
 
-    useEffect(() => {
-        initChart();
-    }, [])
 
     useEffect(() => {
         initChart();

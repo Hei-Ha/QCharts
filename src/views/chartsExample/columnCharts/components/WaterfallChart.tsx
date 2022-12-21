@@ -5,10 +5,13 @@ import { GridComponent, LegendComponent } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import { EChartsCoreOption } from '@src/type/type';
+import {useSelector} from "react-redux";
+import {getUIModeSlice} from "@src/store/reducer/UIMode";
 
 echarts.use([GridComponent, BarChart, CanvasRenderer, LegendComponent]);
 
 export const WaterfallChart = () => {
+    const theme = useSelector(getUIModeSlice);
     const currentChartInstance = useRef<echarts.EChartsType>(null);
     let configOption = {
         legend: {
@@ -83,22 +86,19 @@ export const WaterfallChart = () => {
 
     useEffect(() => {
         initChart();
-    }, [])
+    }, [theme])
 
     const initChart = () => {
         const chartDom = document.getElementById('WaterfallChart');
-        currentChartInstance.current = echarts.init(chartDom);
+        currentChartInstance.current = echarts.init(chartDom, theme);
         configOption && currentChartInstance.current && currentChartInstance.current.setOption(configOption);
     }
 
     const chartDom: React.FC = () => {
-        return <div className='flex flex-col w-full h-full pb-5 bg-#FFFFFF'>
-            <div className='header h-5 w-full'>瀑布图</div>
-            <div
-                id='WaterfallChart'
-                className='w-full h-400px'
-            />
-        </div>
+        return <div
+            id='WaterfallChart'
+            className='w-full h-full'
+        />
     }
 
 

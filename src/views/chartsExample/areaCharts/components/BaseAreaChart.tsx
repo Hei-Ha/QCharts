@@ -48,10 +48,6 @@ export const BaseAreaChart = () => {
 
     useEffect(() => {
         initChart();
-    }, [])
-
-    useEffect(() => {
-        initChart();
     }, [theme])
 
     const initChart = () => {

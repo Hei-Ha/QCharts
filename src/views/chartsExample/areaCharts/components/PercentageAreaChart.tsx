@@ -77,9 +77,6 @@ export const PercentageAreaChart = () => {
         ]
     };
 
-    useEffect(() => {
-        initChart();
-    }, [])
 
     useEffect(() => {
         initChart();
