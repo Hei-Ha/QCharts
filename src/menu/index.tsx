@@ -19,7 +19,7 @@ export const SlidMenu = () => {
                 font-medium text-sm h-12 flex items-center pl-5`}
         >
             <img className='w-4 h-4' src="https://img.qcraftai.com/qchart/chartListIcon.png" alt="chartListIcon"/>
-            <span className='ml-2'>轻舟图表</span>
+            <span className='ml-2'>图表类型</span>
         </div>
         <Menu
             mode='vertical'
